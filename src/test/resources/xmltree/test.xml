@@ -1,0 +1,1447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../styles/SiteCfg.EFTEFTCCRCurrencyRates-v0101.xslt"?>
+<CCR_DATA>
+	<CCR_ING_INSTITUTION_GROUP>
+		<ING_INM_GRP_NAME_LK value="GLOBAL"/>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="MMK"/>
+			<CUR_NUM_CODE value="104"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Kyat"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="BIF"/>
+			<CUR_NUM_CODE value="108"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Franc du Burundi"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="KHR"/>
+			<CUR_NUM_CODE value="116"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Riel"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="DZD"/>
+			<CUR_NUM_CODE value="12"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dinar algérien"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="CAD"/>
+			<CUR_NUM_CODE value="124"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar canadien"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="CVE"/>
+			<CUR_NUM_CODE value="132"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Escudo du Cap-Vert"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="KYD"/>
+			<CUR_NUM_CODE value="136"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar des Iles Caïmanes"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="LKR"/>
+			<CUR_NUM_CODE value="144"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Roupie de Sri Lanka"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="CLP"/>
+			<CUR_NUM_CODE value="152"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Peso chilien"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="CNY"/>
+			<CUR_NUM_CODE value="156"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Yuan Ren-Min-Bi"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="COP"/>
+			<CUR_NUM_CODE value="170"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Peso colombien"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="KMF"/>
+			<CUR_NUM_CODE value="174"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Franc des Comores"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="CRC"/>
+			<CUR_NUM_CODE value="188"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Colon de Costa Rica"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="HRK"/>
+			<CUR_NUM_CODE value="191"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Kuna"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="CUP"/>
+			<CUR_NUM_CODE value="192"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Peso cubain"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="CZK"/>
+			<CUR_NUM_CODE value="203"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Couronne tchèque"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="DKK"/>
+			<CUR_NUM_CODE value="208"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Couronne danoise"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="DOP"/>
+			<CUR_NUM_CODE value="214"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Peso dominicain"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="SVC"/>
+			<CUR_NUM_CODE value="222"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Colon du El Salvador"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="ETB"/>
+			<CUR_NUM_CODE value="230"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Birr éthiopien"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="ERN"/>
+			<CUR_NUM_CODE value="232"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Nakfa"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="EEK"/>
+			<CUR_NUM_CODE value="233"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Couronne estonienne"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="FKP"/>
+			<CUR_NUM_CODE value="238"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Livre de Falkland"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="FJD"/>
+			<CUR_NUM_CODE value="242"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar de Fidji"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="DJF"/>
+			<CUR_NUM_CODE value="262"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Franc de Djibouti"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="GMD"/>
+			<CUR_NUM_CODE value="270"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dalasi"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="GIP"/>
+			<CUR_NUM_CODE value="292"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Livre de Gibraltar"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="ARS"/>
+			<CUR_NUM_CODE value="32"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Peso argentin"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="GTQ"/>
+			<CUR_NUM_CODE value="320"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Quetzal"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="GNF"/>
+			<CUR_NUM_CODE value="324"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Franc guinéen"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="GYD"/>
+			<CUR_NUM_CODE value="328"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar de Guyane"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="HTG"/>
+			<CUR_NUM_CODE value="332"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Gourde"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="HNL"/>
+			<CUR_NUM_CODE value="340"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Lempira"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="HKD"/>
+			<CUR_NUM_CODE value="344"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar de Hong-Kong"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="HUF"/>
+			<CUR_NUM_CODE value="348"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Forint"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="ISK"/>
+			<CUR_NUM_CODE value="352"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Couronne islandaise"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="INR"/>
+			<CUR_NUM_CODE value="356"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Roupie indienne"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="AUD"/>
+			<CUR_NUM_CODE value="36"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar australien"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="IDR"/>
+			<CUR_NUM_CODE value="360"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Rupiah"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="IRR"/>
+			<CUR_NUM_CODE value="364"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Rial iranien"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="IQD"/>
+			<CUR_NUM_CODE value="368"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dinar iraquien"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="ILS"/>
+			<CUR_NUM_CODE value="376"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Nouveau israëli sheqel"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="JMD"/>
+			<CUR_NUM_CODE value="388"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar jamaïcain"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="JPY"/>
+			<CUR_NUM_CODE value="392"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Yen"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="KZT"/>
+			<CUR_NUM_CODE value="398"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Tenge"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="JOD"/>
+			<CUR_NUM_CODE value="400"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dinar jordanien"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="KES"/>
+			<CUR_NUM_CODE value="404"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Shilling du Kenya"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="KPW"/>
+			<CUR_NUM_CODE value="408"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Won de la Corée du Nord"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="KRW"/>
+			<CUR_NUM_CODE value="410"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Won"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="KWD"/>
+			<CUR_NUM_CODE value="414"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dinar koweïtien"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="KGS"/>
+			<CUR_NUM_CODE value="417"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Som"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="LAK"/>
+			<CUR_NUM_CODE value="418"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Kip"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="LBP"/>
+			<CUR_NUM_CODE value="422"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Livre libanaise"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="LSL"/>
+			<CUR_NUM_CODE value="426"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Loti"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="LVL"/>
+			<CUR_NUM_CODE value="428"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Lats letton"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="LRD"/>
+			<CUR_NUM_CODE value="430"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar libérien"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="LYD"/>
+			<CUR_NUM_CODE value="434"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dinar libyen"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="BSD"/>
+			<CUR_NUM_CODE value="44"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar des Bahamas"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="LTL"/>
+			<CUR_NUM_CODE value="440"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Litas lituanien"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="MOP"/>
+			<CUR_NUM_CODE value="446"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Pataca"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="MWK"/>
+			<CUR_NUM_CODE value="454"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Kwacha"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="MYR"/>
+			<CUR_NUM_CODE value="458"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Ringgit de Malaisie"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="MVR"/>
+			<CUR_NUM_CODE value="462"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Rufiyaa"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="MRO"/>
+			<CUR_NUM_CODE value="478"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Ouguija"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="BHD"/>
+			<CUR_NUM_CODE value="48"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dinar de Bahreïn"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="MUR"/>
+			<CUR_NUM_CODE value="480"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Roupie de Maurice"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="MXN"/>
+			<CUR_NUM_CODE value="484"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Peso mexicain"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="MNT"/>
+			<CUR_NUM_CODE value="496"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Tugrik"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="MDL"/>
+			<CUR_NUM_CODE value="498"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Leu de Moldovie"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="BDT"/>
+			<CUR_NUM_CODE value="50"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Taka"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="MAD"/>
+			<CUR_NUM_CODE value="504"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dirham marocain"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="AMD"/>
+			<CUR_NUM_CODE value="51"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dram arménien"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="OMR"/>
+			<CUR_NUM_CODE value="512"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Rial Omani"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="NAD"/>
+			<CUR_NUM_CODE value="516"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar namibien"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="BBD"/>
+			<CUR_NUM_CODE value="52"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar de Barbade"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="NPR"/>
+			<CUR_NUM_CODE value="524"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Roupie du Népal"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="ANG"/>
+			<CUR_NUM_CODE value="532"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Florin des Antilles"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="AWG"/>
+			<CUR_NUM_CODE value="533"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Florin d&#39;Aruba"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="VUV"/>
+			<CUR_NUM_CODE value="548"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Vatu"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="NZD"/>
+			<CUR_NUM_CODE value="554"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar néo-zélandais"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="NIO"/>
+			<CUR_NUM_CODE value="558"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Cordoba Oro"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="NGN"/>
+			<CUR_NUM_CODE value="566"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Naira"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="NOK"/>
+			<CUR_NUM_CODE value="578"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Couronne norvégienne"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="PKR"/>
+			<CUR_NUM_CODE value="586"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Roupie du Pakistan"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="PAB"/>
+			<CUR_NUM_CODE value="590"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Balboa"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="PGK"/>
+			<CUR_NUM_CODE value="598"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Kina"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="BMD"/>
+			<CUR_NUM_CODE value="60"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar des Bermudes"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="PYG"/>
+			<CUR_NUM_CODE value="600"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Guarani"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="PEN"/>
+			<CUR_NUM_CODE value="604"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Nouveau Sol"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="PHP"/>
+			<CUR_NUM_CODE value="608"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Peso philippin"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="GWP"/>
+			<CUR_NUM_CODE value="624"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Peso de Guinée-Bissau"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="QAR"/>
+			<CUR_NUM_CODE value="634"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Riyal du Qatar"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="BTN"/>
+			<CUR_NUM_CODE value="64"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Ngultrum"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="RUB"/>
+			<CUR_NUM_CODE value="643"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Rouble russe"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="RWF"/>
+			<CUR_NUM_CODE value="646"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Franc du Rwanda"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="SHP"/>
+			<CUR_NUM_CODE value="654"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Livre de Sainte-Hélène"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="STD"/>
+			<CUR_NUM_CODE value="678"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dobra"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="BOB"/>
+			<CUR_NUM_CODE value="68"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Boliviano"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="SAR"/>
+			<CUR_NUM_CODE value="682"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Riyal saoudien"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="SCR"/>
+			<CUR_NUM_CODE value="690"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Roupie des Seychelles"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="SLL"/>
+			<CUR_NUM_CODE value="694"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Leone"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="SGD"/>
+			<CUR_NUM_CODE value="702"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar de Singapour"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="SKK"/>
+			<CUR_NUM_CODE value="703"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Couronne slovaque"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="VND"/>
+			<CUR_NUM_CODE value="704"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dong"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="SOS"/>
+			<CUR_NUM_CODE value="706"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Shilling de Somalie"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="ZAR"/>
+			<CUR_NUM_CODE value="710"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Rand"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="BWP"/>
+			<CUR_NUM_CODE value="72"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Pula"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="SZL"/>
+			<CUR_NUM_CODE value="748"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Lilangeni"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="SEK"/>
+			<CUR_NUM_CODE value="752"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Couronne suédoise"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="CHF"/>
+			<CUR_NUM_CODE value="756"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Franc Suisse"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="SYP"/>
+			<CUR_NUM_CODE value="760"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Livre syrienne"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="THB"/>
+			<CUR_NUM_CODE value="764"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Baht"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="TOP"/>
+			<CUR_NUM_CODE value="776"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Pa&#39;anga"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="TTD"/>
+			<CUR_NUM_CODE value="780"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar de la Trinité et de Tobago"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="AED"/>
+			<CUR_NUM_CODE value="784"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dirham des émirats arabes unis"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="TND"/>
+			<CUR_NUM_CODE value="788"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dinar tunisien"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="TMM"/>
+			<CUR_NUM_CODE value="795"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Manat"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="ALL"/>
+			<CUR_NUM_CODE value="8"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Lek"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="UGX"/>
+			<CUR_NUM_CODE value="800"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Shilling ougandais"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="MKD"/>
+			<CUR_NUM_CODE value="807"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Denar"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="EGP"/>
+			<CUR_NUM_CODE value="818"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Livre égyptienne"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="GBP"/>
+			<CUR_NUM_CODE value="826"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Livre sterling"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="TZS"/>
+			<CUR_NUM_CODE value="834"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Shilling de Tanzanie"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="BZD"/>
+			<CUR_NUM_CODE value="84"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar de Belize"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="USD"/>
+			<CUR_NUM_CODE value="840"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar des États-Unis"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="UYU"/>
+			<CUR_NUM_CODE value="858"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Peso uruguayen"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="UZS"/>
+			<CUR_NUM_CODE value="860"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Soum d&#39;Ouzbékistan"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="WST"/>
+			<CUR_NUM_CODE value="882"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Tala"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="YER"/>
+			<CUR_NUM_CODE value="886"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Riyal du Yémen"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="ZMB"/>
+			<CUR_NUM_CODE value="894"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Kwacha"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="SBD"/>
+			<CUR_NUM_CODE value="90"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar de Salomon"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="TWD"/>
+			<CUR_NUM_CODE value="901"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Nouveau dollar de Taïwan"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="ZWR"/>
+			<CUR_NUM_CODE value="935"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar du Zimbabwe"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="GHS"/>
+			<CUR_NUM_CODE value="936"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Ghana Cedi"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="VEF"/>
+			<CUR_NUM_CODE value="937"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Bolivar Fuerte"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="SDG"/>
+			<CUR_NUM_CODE value="938"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Livre soudanaise"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="UYI"/>
+			<CUR_NUM_CODE value="940"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Uruguay Peso en Unidades Indexadas"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="RSD"/>
+			<CUR_NUM_CODE value="941"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dinar serbe"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="MZN"/>
+			<CUR_NUM_CODE value="943"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Metical"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="AZN"/>
+			<CUR_NUM_CODE value="944"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Manat"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="RON"/>
+			<CUR_NUM_CODE value="946"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Les nouveaux noms seront communiqués ultérieurement"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="CHE"/>
+			<CUR_NUM_CODE value="947"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="WIR Euro"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="CHW"/>
+			<CUR_NUM_CODE value="948"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="WIR Franc"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="TRY"/>
+			<CUR_NUM_CODE value="949"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Le nouveau nom sera communiqué ultérieurement"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="XAF"/>
+			<CUR_NUM_CODE value="950"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Franc CFA - BEAC : Autorité responsable: Banque des États de l&#39;Afrique Centrale."/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="XCD"/>
+			<CUR_NUM_CODE value="951"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar des Caraïbes orientales"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="XOF"/>
+			<CUR_NUM_CODE value="952"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Franc CFA - BCEAO Autorité responsable: Banque Centrale des États de l&#39;Afrique de l&#39;Ouest."/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="XPF"/>
+			<CUR_NUM_CODE value="953"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Franc CFP"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="XBA"/>
+			<CUR_NUM_CODE value="955"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Unité européenne composée (EURCO)"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="XBB"/>
+			<CUR_NUM_CODE value="956"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Unité monétaire européenne (U.M.E.-6 monnaie)"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="XBC"/>
+			<CUR_NUM_CODE value="957"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Unité de compte 9 (U.E.C.-9 monnaie)"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="XBD"/>
+			<CUR_NUM_CODE value="958"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Unité de compte 17(U.E.C.-17 monnaie)"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="XAU"/>
+			<CUR_NUM_CODE value="959"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Or"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="BND"/>
+			<CUR_NUM_CODE value="96"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar de Brunei"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="XDR"/>
+			<CUR_NUM_CODE value="960"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Droit de tirage spécial (D.T.S.)"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="XAG"/>
+			<CUR_NUM_CODE value="961"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Argent"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="XPT"/>
+			<CUR_NUM_CODE value="962"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Platine"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="XTS"/>
+			<CUR_NUM_CODE value="963"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Codes réservés spécifiquement à des fins d&#39;essai"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="XPD"/>
+			<CUR_NUM_CODE value="964"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Palladium"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="SRD"/>
+			<CUR_NUM_CODE value="968"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Dollar de Surinam"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="MGA"/>
+			<CUR_NUM_CODE value="969"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Malagasy Ariary"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="COU"/>
+			<CUR_NUM_CODE value="970"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Unidad de Valor Real"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="AFN"/>
+			<CUR_NUM_CODE value="971"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Afghani"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="TJS"/>
+			<CUR_NUM_CODE value="972"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Somoni"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="AOA"/>
+			<CUR_NUM_CODE value="973"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Kwanza"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="BYR"/>
+			<CUR_NUM_CODE value="974"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Rouble bélorusse"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="BGN"/>
+			<CUR_NUM_CODE value="975"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Bulgarian Lev"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="CDF"/>
+			<CUR_NUM_CODE value="976"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Franc Congolais"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="BAM"/>
+			<CUR_NUM_CODE value="977"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Mark convertible"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="EUR"/>
+			<CUR_NUM_CODE value="978"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Euro"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="MXV"/>
+			<CUR_NUM_CODE value="979"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Mexican Unidad de Inversion"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="UAH"/>
+			<CUR_NUM_CODE value="980"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Hryvnia"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="GEL"/>
+			<CUR_NUM_CODE value="981"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Lari"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="BOV"/>
+			<CUR_NUM_CODE value="984"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Mvdol"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="PLN"/>
+			<CUR_NUM_CODE value="985"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Zloty"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="BRL"/>
+			<CUR_NUM_CODE value="986"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Real"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="CLF"/>
+			<CUR_NUM_CODE value="990"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Unité d&#39;investissement"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="USN"/>
+			<CUR_NUM_CODE value="997"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Lendemain"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="USS"/>
+			<CUR_NUM_CODE value="998"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Même jour"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+		<CCR_CUR_CURRENCY>
+			<CUR_ALPHA_CODE value="XXX"/>
+			<CUR_NUM_CODE value="999"/>
+			<CCR_DST_DESC_TEXT>
+				<DST_CODE_LANG_PK value="FR"/>
+				<DST_LABEL value="Pas de monnaie reconnue"/>
+			</CCR_DST_DESC_TEXT>
+		</CCR_CUR_CURRENCY>
+	</CCR_ING_INSTITUTION_GROUP>
+</CCR_DATA>

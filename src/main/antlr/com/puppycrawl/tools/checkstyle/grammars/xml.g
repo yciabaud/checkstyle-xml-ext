@@ -114,9 +114,7 @@ tokens{
 // XML file
 document
 	: 	(prolog)*
-                (PCDATA)? (DOCTYPE (PCDATA)?)?
 		(element)
-		(PCDATA)?
 	;
 
 prolog
@@ -124,9 +122,7 @@ prolog
 
 element
     : startTag
-        (element
-        | PCDATA
-        )*
+        (element)*
         endTag
     | emptyElement
     ;
@@ -191,32 +187,35 @@ options {
 
 }
 
+TAG_PROLOG_OPEN : "<?xml" { tagMode = true; } ;
+TAG_PROLOG_END : ({tagMode}? ("?>")) ;
+
+TAG_CDDATA_OPEN : "<![CDATA[" { tagMode = true; } ;
+TAG_CDDATA_CLOSE : ({tagMode}? ("]]>")) ;
+
 TAG_START_OPEN : '<' { tagMode = true; } ;
 TAG_END_OPEN : "</" { tagMode = true; } ;
 TAG_CLOSE : ({tagMode}? ('>' { tagMode = false; })) ;
 TAG_EMPTY_CLOSE : ({tagMode}? ("/>" { tagMode = false; })) ;
 
-TAG_PROLOG_OPEN : "<?" { tagMode = true; } ;
-TAG_PROLOG_CLOSE : ({tagMode}? ("?>" { tagMode = false; })) ;
+GENERIC_ID : ({tagMode}? (( LETTER | '_' | ':') (NAMECHAR)* )) ;
 
 ATTR_EQ : ({tagMode}? ('=')) ;
 
-ATTR_VALUE : ({tagMode}?
+ATTR_VALUE : ({tagMode}? 
         ( '"' (~'"')* '"'
         | '\'' (~'\'')* '\''
-        ))        
+        ))
     ;
 
-PCDATA : ({tagMode}? (~'<')+ ) ;
+protected STRING_NO_QUOTE
+	:	'"'! (~'"')* '"'!
+	|	'\''! (~'\'')* '\''!
+	;
 
-GENERIC_ID
-    : ({tagMode}? (
-      ( LETTER | '_' | ':') (NAMECHAR)*
-      ))
-    ;
-
-protected NAME
-	:	( LETTER | '_' | ':') ( options {greedy=true;} : NAMECHAR )*
+protected STRING
+	:	'"' (~'"')* '"'
+	|	'\'' (~'\'')* '\''
 	;
 
 protected NAMECHAR
@@ -232,19 +231,34 @@ protected LETTER
 	| 'A'..'Z'
 	;
 
-// Whitespace -- ignored
-WS	:	(	' '
-		|	'\t'
-		|	'\f'
-			// handle newlines
-		|	(	options {generateAmbigWarnings=false;}
-			:	"\r\n"  // Evil DOS
-			|	'\r'    // Macintosh
-			|	'\n'    // Unix (the right way)
-			)
-			{ newline(); }
-		)+
-		{ _ttype = Token.SKIP; }
+WS  :  ({tagMode}? 
+       (' '|'\r'|'\t'|'\u000C'|'\n'))
+    ;
+
+ESC
+	: ( '\t'
+	 	|	NL
+		)
 	;
 
-
+// taken from html.g
+// Alexander Hinds & Terence Parr
+// from antlr 2.5.0: example/html 
+//
+// '\r' '\n' can be matched in one alternative or by matching
+// '\r' in one iteration and '\n' in another.  I am trying to
+// handle any flavor of newline that comes in, but the language
+// that allows both "\r\n" and "\r" and "\n" to all be valid
+// newline is ambiguous.  Consequently, the resulting grammar
+// must be ambiguous.  I'm shutting this warning off.
+NL
+    : (	options {
+	generateAmbigWarnings=false;
+	greedy = true;
+    }
+		: '\n'
+		|	"\r\n"
+		|	'\r'
+		)
+		{ newline(); }
+	;

@@ -13,12 +13,8 @@ public class GrammarTest {
     @Test
     public void lexerTest() throws TokenStreamException {
 
-        GeneratedXmlLexer lexer = new GeneratedXmlLexer(GrammarTest.class.getResourceAsStream("/test.xml"));
+        GeneratedXmlLexer lexer = new GeneratedXmlLexer(GrammarTest.class.getResourceAsStream("/simple.xml"));
         Token token;
-        while ((token = lexer.nextToken()).getType()!=Token.EOF_TYPE) 
-            System.out.println("Token: "+token.getText());
-        
-        lexer = new GeneratedXmlLexer(GrammarTest.class.getResourceAsStream("/simple.xml"));
         while ((token = lexer.nextToken()).getType()!=Token.EOF_TYPE) 
             System.out.println("Token: "+token.getText());
 
