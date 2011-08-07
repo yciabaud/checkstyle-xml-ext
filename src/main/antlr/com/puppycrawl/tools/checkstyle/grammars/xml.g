@@ -22,6 +22,8 @@ options {
 
 tokens{
     GENERIC_END;
+    ELEMENT;
+    ATTRIBUTE;
 }
 
 {
@@ -113,27 +115,32 @@ tokens{
 
 // XML file
 document
-	: 	(prolog)*
-		(element)
+	:   (PCDATA)? (DOCTYPE (PCDATA)?)?
+            (PI)*
+            element
+            (PCDATA)?
+            EOF!
 	;
 
-prolog
-    : TAG_PROLOG_OPEN (attribute)* TAG_PROLOG_CLOSE ;
-
 element
-    : startTag
-        (element)*
-        endTag
-    | emptyElement
+    : ( t:startTag {#t.setType(ELEMENT);} 
+        (TAG_EMPTY_CLOSE
+        |(TAG_CLOSE 
+            (element
+            | PCDATA
+            | WS
+            )*
+            endTag
+        ))
+        (WS)*
+      )
     ;
 
-startTag  : TAG_START_OPEN GENERIC_ID (attribute)* TAG_CLOSE ;
+startTag  : TAG_START_OPEN^ GENERIC_ID (WS)* (attribute)* (WS)* ;
 
-attribute  : GENERIC_ID ATTR_EQ ATTR_VALUE ;
+attribute  : a:GENERIC_ID^ {#a.setType(ATTRIBUTE);} ATTR_EQ ATTR_VALUE! (WS)* ;
 
-endTag :  TAG_END_OPEN GENERIC_ID TAG_CLOSE ;
-
-emptyElement : TAG_START_OPEN GENERIC_ID  (attribute)* TAG_EMPTY_CLOSE ;
+endTag :  TAG_END_OPEN GENERIC_ID TAG_CLOSE! ;
 
 
 //----------------------------------------------------------------------------
@@ -187,26 +194,25 @@ options {
 
 }
 
-TAG_PROLOG_OPEN : "<?xml" { tagMode = true; } ;
 TAG_PROLOG_END : ({tagMode}? ("?>")) ;
 
-TAG_CDDATA_OPEN : "<![CDATA[" { tagMode = true; } ;
-TAG_CDDATA_CLOSE : ({tagMode}? ("]]>")) ;
+TAG_CDDATA_OPEN : "<![CDATA[" ;
+TAG_CDDATA_CLOSE : ("]]>") ;
 
-TAG_START_OPEN : '<' { tagMode = true; } ;
-TAG_END_OPEN : "</" { tagMode = true; } ;
-TAG_CLOSE : ({tagMode}? ('>' { tagMode = false; })) ;
-TAG_EMPTY_CLOSE : ({tagMode}? ("/>" { tagMode = false; })) ;
+TAG_START_OPEN : '<' ;
+TAG_END_OPEN : "</" ;
+TAG_CLOSE : ('>') ;
+TAG_EMPTY_CLOSE : ("/>") ;
 
-GENERIC_ID : ({tagMode}? (( LETTER | '_' | ':') (NAMECHAR)* )) ;
+ATTR_EQ : ('=') ;
 
-ATTR_EQ : ({tagMode}? ('=')) ;
-
-ATTR_VALUE : ({tagMode}? 
+ATTR_VALUE :
         ( '"' (~'"')* '"'
         | '\'' (~'\'')* '\''
-        ))
+        )
     ;
+
+GENERIC_ID : ( LETTER | '_' | ':') (NAMECHAR)* ;
 
 protected STRING_NO_QUOTE
 	:	'"'! (~'"')* '"'!
@@ -231,11 +237,10 @@ protected LETTER
 	| 'A'..'Z'
 	;
 
-WS  :  ({tagMode}? 
-       (' '|'\r'|'\t'|'\u000C'|'\n'))
+WS!  :  (' '|'\r'|'\t'|'\u000C'|'\n')
     ;
 
-ESC
+ESC!
 	: ( '\t'
 	 	|	NL
 		)
@@ -251,7 +256,7 @@ ESC
 // that allows both "\r\n" and "\r" and "\n" to all be valid
 // newline is ambiguous.  Consequently, the resulting grammar
 // must be ambiguous.  I'm shutting this warning off.
-NL
+NL!
     : (	options {
 	generateAmbigWarnings=false;
 	greedy = true;
@@ -262,3 +267,79 @@ NL
 		)
 		{ newline(); }
 	;
+
+DOCTYPE!
+    :
+        "<!DOCTYPE" WS GENERIC_ID 
+        WS
+        ( 
+            ( "SYSTEM" WS sys1:STRING  
+                
+            | "PUBLIC" WS pub:STRING WS sys2:STRING 
+            )
+            ( WS )?
+        )?
+        ( dtd:INTERNAL_DTD ( WS )? 
+
+        )?
+		'>'
+	;
+
+protected INTERNAL_DTD
+    :
+        '['!
+        // reports warning, but is absolutely ok (checked generated code)
+        // besides this warning was not generated with k=1 which is 
+        // enough for this rule...
+        ( options {greedy=false;} : NL
+        | STRING // handle string specially to avoid to mistake ']' in string for end dtd
+        | .
+        )*
+        ']'!
+    ;
+
+PI! 
+    :
+        "<?" 
+        GENERIC_ID
+        { tagMode = true; }
+	;
+
+// multiple-line comments
+protected
+COMMENT_DATA
+	:	(	/*	'\r' '\n' can be matched in one alternative or by matching
+				'\r' in one iteration and '\n' in another.  I am trying to
+				handle any flavor of newline that comes in, but the language
+				that allows both "\r\n" and "\r" and "\n" to all be valid
+				newline is ambiguous.  Consequently, the resulting grammar
+				must be ambiguous.  I'm shutting this warning off.
+			 */
+			options {
+				generateAmbigWarnings=false;
+			}
+		:
+			{!(LA(2)=='-' && LA(3)=='>')}? '-' // allow '-' if not "-->"
+		|	'\r' '\n'		{newline();}
+		|	'\r'			{newline();}
+		|	'\n'			{newline();}
+		|	~('-'|'\n'|'\r')
+		)*
+	;
+
+
+COMMENT!
+	:	"<!--" c:COMMENT_DATA "-->" (WS)?
+		{ $setType(Token.SKIP); }
+	;
+
+PCDATA	: 
+        PCDATA_DATA
+	;
+
+protected PCDATA_DATA
+	: 
+        ( options {greedy=true;} : NL
+        | ~( '<' | '\n' | '\r' )
+        )+
+    ;
