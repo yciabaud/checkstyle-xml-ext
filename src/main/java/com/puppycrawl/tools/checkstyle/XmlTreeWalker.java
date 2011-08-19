@@ -1,13 +1,8 @@
 package com.puppycrawl.tools.checkstyle;
 
-import antlr.RecognitionException;
-import antlr.TokenStreamException;
-import antlr.TokenStreamRecognitionException;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
-import com.puppycrawl.tools.checkstyle.DefaultContext;
-import com.puppycrawl.tools.checkstyle.ModuleFactory;
 import com.puppycrawl.tools.checkstyle.api.AbstractFileSetCheck;
 import com.puppycrawl.tools.checkstyle.api.Check;
 import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
@@ -19,18 +14,20 @@ import com.puppycrawl.tools.checkstyle.api.FileText;
 import com.puppycrawl.tools.checkstyle.api.LocalizedMessage;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.api.Utils;
-import com.puppycrawl.tools.checkstyle.grammars.GeneratedXmlLexer;
-import com.puppycrawl.tools.checkstyle.grammars.GeneratedXmlRecognizer;
 import java.io.File;
 import java.io.IOException;
-import java.io.Reader;
 import java.io.StringReader;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+import javax.xml.stream.XMLStreamException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.XMLReaderFactory;
 
 
 /**
@@ -146,60 +143,8 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
         try {
             final FileText text = FileText.fromLines(aFile, aLines);
             final FileContents contents = new FileContents(text);
-            final DetailAST rootAST = TreeWalker.parse(contents);
+            final DetailAST rootAST = XmlTreeWalker.parse(contents);
             walk(rootAST, contents);
-        }
-        catch (final RecognitionException re) {
-            Utils.getExceptionLogger()
-                .debug("RecognitionException occured.", re);
-            getMessageCollector().add(
-                new LocalizedMessage(
-                    re.getLine(),
-                    re.getColumn(),
-                    Defn.CHECKSTYLE_BUNDLE,
-                    "general.exception",
-                    new String[] {re.getMessage()},
-                    getId(),
-                    this.getClass(), null));
-        }
-        catch (final TokenStreamRecognitionException tre) {
-            Utils.getExceptionLogger()
-                .debug("TokenStreamRecognitionException occured.", tre);
-            final RecognitionException re = tre.recog;
-            if (re != null) {
-                getMessageCollector().add(
-                    new LocalizedMessage(
-                        re.getLine(),
-                        re.getColumn(),
-                        Defn.CHECKSTYLE_BUNDLE,
-                        "general.exception",
-                        new String[] {re.getMessage()},
-                        getId(),
-                        this.getClass(), null));
-            }
-            else {
-                getMessageCollector().add(
-                    new LocalizedMessage(
-                        0,
-                        Defn.CHECKSTYLE_BUNDLE,
-                        "general.exception",
-                        new String[]
-                        {"TokenStreamRecognitionException occured."},
-                        getId(),
-                        this.getClass(), null));
-            }
-        }
-        catch (final TokenStreamException te) {
-            Utils.getExceptionLogger()
-                .debug("TokenStreamException occured.", te);
-            getMessageCollector().add(
-                new LocalizedMessage(
-                    0,
-                    Defn.CHECKSTYLE_BUNDLE,
-                    "general.exception",
-                    new String[] {te.getMessage()},
-                    getId(),
-                    this.getClass(), null));
         }
         catch (final Throwable err) {
             Utils.getExceptionLogger().debug("Throwable occured.", err);
@@ -391,23 +336,21 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
      * @return the root of the AST
      */
     public static DetailAST parse(FileContents aContents)
-        throws RecognitionException, TokenStreamException, IOException
+        throws IOException, XMLStreamException, SAXException
     {
+        
         final String fullText = aContents.getText().getFullText().toString();
-        final Reader sr = new StringReader(fullText);
-        final GeneratedXmlLexer lexer = new GeneratedXmlLexer(sr);
-        lexer.setFilename(aContents.getFilename());
-        lexer.setCommentListener(aContents);
-        lexer.setTreatAssertAsKeyword(true);
-        lexer.setTreatEnumAsKeyword(true);
-		
-        final GeneratedXmlRecognizer parser =
-            new GeneratedXmlRecognizer(lexer);
-        parser.setFilename(aContents.getFilename());
-        parser.setASTNodeClass(DetailAST.class.getName());
-        parser.document();
-
-        return (DetailAST) parser.getAST();
+        InputSource is = new InputSource();
+        is.setCharacterStream(new StringReader(fullText));
+        
+       
+        XMLReader reader = XMLReaderFactory.createXMLReader();
+        XmlContentHandler contentHandler = new XmlContentHandler();
+        reader.setContentHandler(contentHandler);
+        
+        reader.parse(is);
+ 
+        return contentHandler.getAST();
     }
 
     @Override

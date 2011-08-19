@@ -1,21 +1,29 @@
-<?xml version='1.0'?>
-<!DOCTYPE component [
-<!ELEMENT component (PCDATA|sub)*>
-<!ATTLIST component
-          attr CDATA #IMPLIED
-          attr2 CDATA #IMPLIED
->
-<!ELMENT sub EMPTY>
-
-]>
-<component attr="val'ue" attr2='val"ue'>
-<!-- This is a comment -->
-Text
-<![CDATA[huhu]]>
-цдья
-&amp;
-&lt;
-<?xtal cursor='11'?>
-<sub/>
-<sub></sub>
-</component>
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="xmlpartsstyle.css"?>
+<PARTS>
+   <TITLE>Computer Parts</TITLE>
+   <PART attr="value">
+      <ITEM>Motherboard</ITEM>
+      <MANUFACTURER>ASUS</MANUFACTURER>
+      <MODEL>P3B-F</MODEL>
+      <COST> 123.00</COST>
+   </PART>
+   <PART>
+      <ITEM>Video Card</ITEM>
+      <MANUFACTURER>ATI</MANUFACTURER>
+      <MODEL>All-in-Wonder Pro</MODEL>
+      <COST> 160.00</COST>
+   </PART>
+   <PART>
+      <ITEM>Sound Card</ITEM>
+      <MANUFACTURER>Creative Labs</MANUFACTURER>
+      <MODEL>Sound Blaster Live</MODEL>
+      <COST> 80.00</COST>
+   </PART>
+   <PART>
+      <ITEM>inch Monitor</ITEM>
+      <MANUFACTURER>LG Electronics</MANUFACTURER>
+      <MODEL> 995E</MODEL>
+      <COST> 290.00</COST>
+   </PART>
+</PARTS>
