@@ -15,6 +15,7 @@ import com.puppycrawl.tools.checkstyle.api.LocalizedMessage;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.api.Utils;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.Arrays;
@@ -56,7 +57,7 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
      */
     private final boolean mRecursive;
 	
-	/** cache file **/
+    /** cache file **/
     private PropertyCacheFile mCache = new PropertyCacheFile(null, null);
 
     /** logger for debug purpose */
@@ -109,7 +110,7 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
         final Object module = mModuleFactory.createModule(name);
         if (!(module instanceof Check)) {
             throw new CheckstyleException(
-                "TreeWalker is not allowed as a parent of " + name);
+                "XmlTreeWalker is not allowed as a parent of " + name);
         }
         final Check c = (Check) module;
         c.contextualize(mChildContext);
@@ -143,11 +144,17 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
         try {
             final FileText text = FileText.fromLines(aFile, aLines);
             final FileContents contents = new FileContents(text);
-            final DetailAST rootAST = XmlTreeWalker.parse(contents);
+              
+            final String fullText = contents.getText().getFullText().toString();
+            InputSource document = new InputSource();
+            document.setCharacterStream(new StringReader(fullText));
+            
+            final DetailAST rootAST = XmlTreeWalker.parse(document);
             walk(rootAST, contents);
         }
         catch (final Throwable err) {
             Utils.getExceptionLogger().debug("Throwable occured.", err);
+            err.printStackTrace();
             getMessageCollector().add(
                 new LocalizedMessage(
                     0,
@@ -227,12 +234,12 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
      * @param aAST the root AST
      * @param aContents the contents of the file the AST was generated from
      */
-    private void walk(DetailAST aAST, FileContents aContents)
+    private void walk(DetailAST aAST, FileContents aContents) throws CheckstyleException
     {
         getMessageCollector().reset();
         notifyBegin(aAST, aContents);
 
-        // empty files are not flagged by javac, will yield aAST == null
+        // empty files are not flagged by sax, will yield aAST == null
         if (aAST != null) {
             if (useRecursiveAlgorithm()) {
                 processRec(aAST);
@@ -251,10 +258,11 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
      * @param aRootAST the root of the tree
      * @param aContents the contents of the file the AST was generated from
      */
-    private void notifyBegin(DetailAST aRootAST, FileContents aContents)
+    private void notifyBegin(DetailAST aRootAST, FileContents aContents) throws CheckstyleException
     {
         for (Check ch : mAllChecks) {
             ch.setFileContents(aContents);
+            ch.contextualize(mChildContext);
             ch.beginTree(aRootAST);
         }
     }
@@ -327,7 +335,7 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
     /**
      * Static helper method to parses a Java source file.
      *
-     * @param aContents
+     * @param source
      *                contains the contents of the file
      * @throws TokenStreamException
      *                 if lexing failed
@@ -335,20 +343,16 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
      *                 if parsing failed
      * @return the root of the AST
      */
-    public static DetailAST parse(FileContents aContents)
+    public static DetailAST parse(InputSource source)
         throws IOException, XMLStreamException, SAXException
     {
-        
-        final String fullText = aContents.getText().getFullText().toString();
-        InputSource is = new InputSource();
-        is.setCharacterStream(new StringReader(fullText));
-        
+       
        
         XMLReader reader = XMLReaderFactory.createXMLReader();
         XmlContentHandler contentHandler = new XmlContentHandler();
         reader.setContentHandler(contentHandler);
         
-        reader.parse(is);
+        reader.parse(source);
  
         return contentHandler.getAST();
     }
@@ -377,7 +381,7 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
      * Uses iterative algorithm.
      * @param aRoot the root of tree for process
      */
-    private void processIter(DetailAST aRoot)
+    private void processIter(DetailAST aRoot) throws CheckstyleException
     {
         DetailAST curNode = aRoot;
         while (curNode != null) {
@@ -393,4 +397,5 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
             curNode = toVisit;
         }
     }
+
 }

@@ -1,0 +1,98 @@
+<?xml version= "1.0" encoding= "ISO-8859-1"?>
+<hopital>
+	 <personne id="idPersonne1">
+		 <nom>Hugo</nom>
+		 <prenom>Victor</prenom>
+	 </personne>
+	 <personne id="idPersonne2">
+		 <nom>Victor</nom>
+		 <prenom>Paul Emile</prenom>
+	 </personne>
+	 <personne id="idPersonne3">
+		 <nom>Kontz</nom>
+		 <prenom>Dean R.</prenom>
+	 </personne>
+	 <personne id="idPersonne4">
+		 <nom>Sand</nom>
+	 	<prenom>Georges</prenom>
+	 </personne>
+	 <personne id="idPersonne5">
+		 <nom>Clark</nom>
+		 <prenom>Marie Higgins</prenom>
+	 </personne>
+	 <personne id="idPersonne6">
+		 <nom>Weis</nom>
+		 <prenom>Margaret</prenom>
+	 </personne>
+	 <personne id="idPersonne7">
+		 <nom>Fielding</nom>
+		 <prenom>Helen</prenom>
+	 </personne>
+	 <personne id="idPersonne8">
+		 <nom>de Troyes</nom>
+		 <prenom>Chrétien</prenom>
+	 </personne>
+	 <pensionnaires>
+		 <patient personneId="idPersonne3">
+			 <filiation>
+				 <parent personneId="idPersonne1" type="naturel">
+					 <contact type="journalier" ddebut="1989/02/16" 
+					 dfin ="2001/12/21">Enfance</contact>
+					 <contact type="épisodique" ddebut="2001/12/22" 
+					 dfin ="..">Divorce des parents, baisse des contact
+					 </contact>
+				</parent>
+				 <parent personneId="idPersonne4" type="naturel" >
+					 <contact type="régulier" ddebut="1989/02/16" 
+					 dfin ="2001/12/21">Enfance de Dean R.</contact>
+					 <contact type="aucun" ddebut="2001/12/22" 
+					 dfin ="..">
+					 Rupture entre les parents, Dean R. ne parle plus à sa mère.
+					 </contact>
+				 </parent>
+				 <parent personneId="idPersonne7" type="tuteur" >
+					 <contact type="fréquent" ddebut="2002/02/12" 
+					 dfin ="..">Nouveau tuteur légal</contact>
+				 </parent>
+			 </filiation>
+			 <internements>
+				 <sejour ddebut="2002/01/11" dfin="2002/01/14">
+				 Crise d'appendicite</sejour>
+			 </internements>
+		 </patient>
+		 <patient personneId="idPersonne2">
+			 <filiation>
+					 <parent personneId="idPersonne1" type="naturel">
+						 <contact type="épisodique" ddebut="1985/03/21" 
+						 dfin ="..">Père souvent en déplacement</contact>
+					 </parent>
+					 <parent personneId="idPersonne5" type="naturel" >
+						 <contact type="journalier" ddebut="1985/03/21" 
+						 dfin ="1999/08/11">Paul Emile vit chez sa mère</contact>
+						 <contact type="aucun" ddebut="1999/08/12" 
+						 dfin ="..">Décès</contact>
+					 </parent>
+			 </filiation>
+			 <internements>
+				 <sejour ddebut="1998/03/22" dfin="1998/04/12">
+				 Crise de rire à répétition</sejour>
+			 </internements>
+		 </patient>
+		<patient personneId="idPersonne6">
+			 <filiation>
+				<parent personneId="idPersonne8" type="naturel">
+					<contact type="régulier" ddebut="1982/12/30" 
+					dfin ="..">RAS</contact>
+				 </parent>
+				<parent personneId="idPersonne4" type="naturel">
+					<contact type="régulier" ddebut="1982/12/30" 
+					dfin ="..">RAS</contact>
+				 </parent>
+			</filiation>
+			 <internements>
+				 <sejour ddebut="1998/03/22" dfin="1998/03/25">Bras cassé
+				 </sejour>
+			 </internements>
+		 </patient>
+	 </pensionnaires>
+</hopital>

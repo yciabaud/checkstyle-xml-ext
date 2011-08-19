@@ -10,11 +10,13 @@ import com.puppycrawl.tools.checkstyle.api.FileContents;
 import com.puppycrawl.tools.checkstyle.api.FileText;
 import com.puppycrawl.tools.checkstyle.Main;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import javax.xml.stream.XMLStreamException;
 import org.junit.Assert;
 import org.junit.Test;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 /**
@@ -23,13 +25,12 @@ import org.xml.sax.SAXException;
  */
 public class XmlTreeWalkerTest {
 
-    private static final String[] args = new String[]{"-c", "target/test-classes/config.xml", "-r", "."};
+    private static final String[] args = new String[]{"-c", "target/test-classes/config.xml", "-r", "target/test-classes/xmltree"};
     
     @Test
     public void walkTest() throws IOException, URISyntaxException, XMLStreamException, SAXException {
-        DetailAST tree = XmlTreeWalker.parse(
-                new FileContents(
-                new FileText(new File(XmlTreeWalkerTest.class.getResource("/test.xml").toURI()), "UTF-8")));
+        DetailAST tree = XmlTreeWalker.parse(new InputSource(new FileInputStream(
+                new File(XmlTreeWalkerTest.class.getResource("/test.xml").toURI()))));
 
         Assert.assertEquals(2, tree.getNumberOfChildren());
     }
