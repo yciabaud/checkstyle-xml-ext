@@ -2,6 +2,8 @@ package com.puppycrawl.tools.checkstyle;
 
 import antlr.Token;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.xml.sax.*;
 import org.xml.sax.helpers.LocatorImpl;
 
@@ -19,6 +21,10 @@ public class XmlContentHandler implements ContentHandler {
     private DetailAST root;
     
     private DetailAST currentNode;
+    
+    /** logger for debug purpose */
+    private static final Log LOG =
+        LogFactory.getLog("com.puppycrawl.tools.checkstyle.XmlContentHandler");
 
     /**
      * Constructeur par defaut. 
@@ -49,7 +55,7 @@ public class XmlContentHandler implements ContentHandler {
      * @see org.xml.sax.ContentHandler#startDocument()
      */
     public void startDocument() throws SAXException {
-        System.out.println("Debut de l'analyse du document");
+        LOG.debug("Debut de l'analyse du document");
         
         // Token
         Token token = new Token();
@@ -72,7 +78,7 @@ public class XmlContentHandler implements ContentHandler {
      * @see org.xml.sax.ContentHandler#endDocument()
      */
     public void endDocument() throws SAXException {
-        System.out.println("Fin de l'analyse du document");
+        LOG.debug("Fin de l'analyse du document");
     }
 
     /**
@@ -82,7 +88,7 @@ public class XmlContentHandler implements ContentHandler {
      * @see org.xml.sax.ContentHandler#startPrefixMapping(java.lang.String, java.lang.String)
      */
     public void startPrefixMapping(String prefix, String URI) throws SAXException {
-        System.out.println("Traitement de l'espace de nommage : " + URI + ", prefixe choisi : " + prefix);
+        LOG.debug("Traitement de l'espace de nommage : " + URI + ", prefixe choisi : " + prefix);
         
         // Token
         Token token = new Token();
@@ -131,7 +137,7 @@ public class XmlContentHandler implements ContentHandler {
      * @see org.xml.sax.ContentHandler#endPrefixMapping(java.lang.String)
      */
     public void endPrefixMapping(String prefix) throws SAXException {
-        System.out.println("Fin de traitement de l'espace de nommage : " + prefix);
+        LOG.debug("Fin de traitement de l'espace de nommage : " + prefix);
     }
 
     /**
@@ -144,7 +150,7 @@ public class XmlContentHandler implements ContentHandler {
      * @see org.xml.sax.ContentHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)
      */
     public void startElement(String nameSpaceURI, String localName, String rawName, Attributes attributs) throws SAXException {
-        System.out.println("Ouverture de la balise : " + localName);
+        LOG.debug("Ouverture de la balise : " + localName);
         
         int col = locator.getColumnNumber();
         
@@ -176,11 +182,11 @@ public class XmlContentHandler implements ContentHandler {
         child.addChild(ident);
 
         if (!"".equals(nameSpaceURI)) { // espace de nommage particulier
-            System.out.println("  appartenant a l'espace de nom : " + nameSpaceURI);
+            LOG.debug("  appartenant a l'espace de nom : " + nameSpaceURI);
         }
 
         // Attributes
-        System.out.println("  Attributs de la balise : ");
+        LOG.debug("  Attributs de la balise : ");
         DetailAST attrs = new DetailAST();
         token = new Token();
         token.setLine(locator.getLineNumber());
@@ -202,7 +208,7 @@ public class XmlContentHandler implements ContentHandler {
             token.setType(XmlTokenTypes.ATTRIBUTE);
             attr.initialize(token);
             attrs.addChild(attr);
-            System.out.println("     - " + attributs.getLocalName(index) + " = " + attributs.getValue(index));
+            LOG.debug("     - " + attributs.getLocalName(index) + " = " + attributs.getValue(index));
             
             // Ident
             ident = new DetailAST();
@@ -237,13 +243,11 @@ public class XmlContentHandler implements ContentHandler {
      * @see org.xml.sax.ContentHandler#endElement(java.lang.String, java.lang.String, java.lang.String)
      */
     public void endElement(String nameSpaceURI, String localName, String rawName) throws SAXException {
-        System.out.print("Fermeture de la balise : " + localName);
+        LOG.debug("Fermeture de la balise : " + localName);
 
         if (!"".equals(nameSpaceURI)) { // name space non null
-            System.out.print("appartenant a l'espace de nommage : " + localName);
+            LOG.debug("appartenant a l'espace de nommage : " + localName);
         }
-
-        System.out.println();
         
         // Go to the parent
         currentNode = currentNode.getParent();
@@ -262,7 +266,7 @@ public class XmlContentHandler implements ContentHandler {
         
         String value = new String(ch, start, end);
         
-        System.out.println("#PCDATA : " + value);
+        LOG.debug("#PCDATA : " + value);
         
         // Token
         Token token = new Token();
@@ -295,7 +299,7 @@ public class XmlContentHandler implements ContentHandler {
         
         String value = new String(ch, start, end);
         
-        System.out.println("espaces inutiles rencontres : ..." + value + "...");
+        LOG.debug("espaces inutiles rencontres : ..." + value + "...");
         
         // Token
         Token token = new Token();
@@ -321,8 +325,8 @@ public class XmlContentHandler implements ContentHandler {
      * @see org.xml.sax.ContentHandler#processingInstruction(java.lang.String, java.lang.String)
      */
     public void processingInstruction(String target, String data) throws SAXException {
-        System.out.println("Instruction de fonctionnement : " + target);
-        System.out.println("  dont les arguments sont : " + data);
+        LOG.debug("Instruction de fonctionnement : " + target);
+        LOG.debug("  dont les arguments sont : " + data);
         
         // Token
         Token token = new Token();

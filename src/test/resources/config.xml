@@ -4,6 +4,10 @@
     "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
 <module name="Checker">
   <module name="XmlTreeWalker">
-
+    <module name="XPathCheck">
+      <property name="expression" value="//patient"/>
+      <property name="min" value="1"/>
+      <property name="max" value="5"/>
+    </module>
   </module>
 </module>
