@@ -1,7 +1,8 @@
 package com.puppycrawl.tools.checkstyle;
 
-import antlr.Token;
+import antlr.ASTFactory;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
+import java.io.File;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.xml.sax.*;
@@ -22,6 +23,8 @@ public class XmlContentHandler implements ContentHandler {
     
     private DetailAST currentNode;
     
+    private File file;
+    
     /** logger for debug purpose */
     private static final Log LOG =
         LogFactory.getLog("com.puppycrawl.tools.checkstyle.XmlContentHandler");
@@ -29,11 +32,12 @@ public class XmlContentHandler implements ContentHandler {
     /**
      * Constructeur par defaut. 
      */
-    public XmlContentHandler() {
+    public XmlContentHandler(File file) {
         super();
         // On definit le locator par defaut.
         locator = new LocatorImpl();
         root = null;
+        this.file = file;
     }
 
     /**
@@ -57,11 +61,12 @@ public class XmlContentHandler implements ContentHandler {
     public void startDocument() throws SAXException {
         LOG.debug("Debut de l'analyse du document");
         
-        // Token
-        Token token = new Token();
+        // XmlXmlToken
+        XmlToken token = new XmlToken();
         token.setLine(locator.getLineNumber());
         token.setColumn(locator.getColumnNumber());
         token.setType(XmlTokenTypes.DOCUMENT);
+        token.setText(file.getName());
         
         
         // Node
@@ -69,6 +74,43 @@ public class XmlContentHandler implements ContentHandler {
         root.initialize(token);
         
         currentNode = root;
+        
+        // Path = package
+        token = new XmlToken();
+        token.setLine(locator.getLineNumber());
+        token.setColumn(locator.getColumnNumber());
+        token.setType(XmlTokenTypes.PATH);
+        token.setText(file.getParent());
+        DetailAST path = new DetailAST();
+        path.initialize(token);
+        root.addChild(path);
+        DetailAST pathIdent = new DetailAST();
+        token = new XmlToken();
+        token.setLine(locator.getLineNumber());
+        token.setColumn(locator.getColumnNumber());
+        token.setType(XmlTokenTypes.IDENT);
+        token.setText(file.getParent());
+        pathIdent.initialize(token);
+        path.addChild(pathIdent);
+        path.addChild(new DetailAST());
+        
+        // Name = Type
+        token = new XmlToken();
+        token.setLine(locator.getLineNumber());
+        token.setColumn(locator.getColumnNumber());
+        token.setType(XmlTokenTypes.IDENT);
+        token.setText(file.getName());
+        DetailAST name = new DetailAST();
+        name.initialize(token);
+        root.addChild(name);
+        DetailAST nameIdent = new DetailAST();
+        token = new XmlToken();
+        token.setLine(locator.getLineNumber());
+        token.setColumn(locator.getColumnNumber());
+        token.setType(XmlTokenTypes.IDENT);
+        token.setText(file.getName());
+        nameIdent.initialize(token);
+        name.addChild(nameIdent);
     }
 
     /**
@@ -90,8 +132,8 @@ public class XmlContentHandler implements ContentHandler {
     public void startPrefixMapping(String prefix, String URI) throws SAXException {
         LOG.debug("Traitement de l'espace de nommage : " + URI + ", prefixe choisi : " + prefix);
         
-        // Token
-        Token token = new Token();
+        // XmlToken
+        XmlToken token = new XmlToken();
         token.setLine(locator.getLineNumber());
         token.setColumn(locator.getColumnNumber());
         token.setText(prefix);
@@ -103,7 +145,7 @@ public class XmlContentHandler implements ContentHandler {
         child.initialize(token);
         
         // Prefix
-        token = new Token();
+        token = new XmlToken();
         token.setLine(locator.getLineNumber());
         token.setColumn(locator.getColumnNumber());
         token.setText(prefix);
@@ -111,11 +153,12 @@ public class XmlContentHandler implements ContentHandler {
 
         DetailAST prefixAST = new DetailAST();
         prefixAST.initialize(token);
+        prefixAST.setText(token.getText());
         
         child.addChild(prefixAST);
         
         // URI
-        token = new Token();
+        token = new XmlToken();
         token.setLine(locator.getLineNumber());
         token.setColumn(locator.getColumnNumber());
         token.setText(URI);
@@ -154,8 +197,8 @@ public class XmlContentHandler implements ContentHandler {
         
         int col = locator.getColumnNumber();
         
-        // Token
-        Token token = new Token();
+        // XmlToken
+        XmlToken token = new XmlToken();
         token.setLine(locator.getLineNumber());
         token.setColumn(locator.getColumnNumber());
         token.setText(rawName);
@@ -172,7 +215,7 @@ public class XmlContentHandler implements ContentHandler {
         
         // Ident
         DetailAST ident = new DetailAST();
-        token = new Token();
+        token = new XmlToken();
         token.setLine(locator.getLineNumber());
         col++;
         token.setColumn(col);
@@ -188,7 +231,7 @@ public class XmlContentHandler implements ContentHandler {
         // Attributes
         LOG.debug("  Attributs de la balise : ");
         DetailAST attrs = new DetailAST();
-        token = new Token();
+        token = new XmlToken();
         token.setLine(locator.getLineNumber());
         col += rawName.length() + 1;
         token.setColumn( col );
@@ -201,7 +244,7 @@ public class XmlContentHandler implements ContentHandler {
             
             // Attribut
             DetailAST attr = new DetailAST();
-            token = new Token();
+            token = new XmlToken();
             token.setLine(locator.getLineNumber());
             token.setColumn( index );
             token.setText(rawName);
@@ -212,7 +255,7 @@ public class XmlContentHandler implements ContentHandler {
             
             // Ident
             ident = new DetailAST();
-            token = new Token();
+            token = new XmlToken();
             token.setLine(locator.getLineNumber());
             token.setColumn( index );
             token.setText(rawName);
@@ -222,7 +265,7 @@ public class XmlContentHandler implements ContentHandler {
             
             // Value
             DetailAST value  = new DetailAST();
-            token = new Token();
+            token = new XmlToken();
             token.setLine(locator.getLineNumber());
             token.setColumn( index + attributs.getLocalName(index).length() + 1 );
             token.setText(rawName);
@@ -268,8 +311,8 @@ public class XmlContentHandler implements ContentHandler {
         
         LOG.debug("#PCDATA : " + value);
         
-        // Token
-        Token token = new Token();
+        // XmlToken
+        XmlToken token = new XmlToken();
         token.setLine(locator.getLineNumber());
         token.setColumn(locator.getColumnNumber() + start);
         token.setText(value);
@@ -279,6 +322,7 @@ public class XmlContentHandler implements ContentHandler {
         // Node
         DetailAST child = new DetailAST();
         child.initialize(token);
+        child.setText(token.getText());
         
         // Parent
         currentNode.addChild(child);
@@ -301,8 +345,8 @@ public class XmlContentHandler implements ContentHandler {
         
         LOG.debug("espaces inutiles rencontres : ..." + value + "...");
         
-        // Token
-        Token token = new Token();
+        // XmlToken
+        XmlToken token = new XmlToken();
         token.setLine(locator.getLineNumber());
         token.setColumn(locator.getColumnNumber() + start);
         token.setText(value);
@@ -312,6 +356,7 @@ public class XmlContentHandler implements ContentHandler {
         // Node
         DetailAST child = new DetailAST();
         child.initialize(token);
+        child.setText(token.getText());
         
         // Parent
         currentNode.addChild(child);
@@ -328,8 +373,8 @@ public class XmlContentHandler implements ContentHandler {
         LOG.debug("Instruction de fonctionnement : " + target);
         LOG.debug("  dont les arguments sont : " + data);
         
-        // Token
-        Token token = new Token();
+        // XmlToken
+        XmlToken token = new XmlToken();
         token.setLine(locator.getLineNumber());
         token.setColumn(locator.getColumnNumber());
         token.setText(target);
@@ -339,9 +384,10 @@ public class XmlContentHandler implements ContentHandler {
         // Node
         DetailAST child = new DetailAST();
         child.initialize(token);
+        child.setText(token.getText());
                 
         // Target
-        token = new Token();
+        token = new XmlToken();
         token.setLine(locator.getLineNumber());
         token.setColumn(locator.getColumnNumber());
         token.setText(target);
@@ -349,10 +395,11 @@ public class XmlContentHandler implements ContentHandler {
         
         DetailAST targetAST = new DetailAST();
         targetAST.initialize(token);
+        targetAST.setText(token.getText());
         child.addChild(targetAST);
         
         // Data
-        token = new Token();
+        token = new XmlToken();
         token.setLine(locator.getLineNumber());
         token.setColumn(locator.getColumnNumber());
         token.setText(data);
@@ -360,6 +407,7 @@ public class XmlContentHandler implements ContentHandler {
         
         DetailAST dataAST = new DetailAST();
         dataAST.initialize(token);
+        dataAST.setText(token.getText());
         child.addChild(dataAST);
         
         
@@ -378,8 +426,8 @@ public class XmlContentHandler implements ContentHandler {
         // Pour eviter cet evenement, le mieux est quand meme de specifier une dtd pour vos
         // documents xml et de les faire valider par votre parser.        
         
-        // Token
-        Token token = new Token();
+        // XmlToken
+        XmlToken token = new XmlToken();
         token.setLine(locator.getLineNumber());
         token.setColumn(locator.getColumnNumber() );
         token.setText(text);
@@ -389,6 +437,7 @@ public class XmlContentHandler implements ContentHandler {
         // Node
         DetailAST child = new DetailAST();
         child.initialize(token);
+        child.setText(token.getText());
          
         // Parent
         currentNode.addChild(child);

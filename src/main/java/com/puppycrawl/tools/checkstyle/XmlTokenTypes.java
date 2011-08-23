@@ -35,13 +35,14 @@ public final class XmlTokenTypes {
     public static final int EOF = TokenTypes.EOF;
     
     public static final int DOCUMENT = TokenTypes.CLASS_DEF;
-    public static final int ELEMENT = TokenTypes.VARIABLE_DEF;
+    public static final int PATH = TokenTypes.PACKAGE_DEF;
+    public static final int ELEMENT = TokenTypes.METHOD_DEF;
     public static final int ATTRIBUTES = TokenTypes.PARAMETERS;
     public static final int ATTRIBUTE = TokenTypes.PARAMETER_DEF;
     public static final int IDENT = TokenTypes.IDENT;
     public static final int STRING_LITERAL = TokenTypes.STRING_LITERAL;
-    public static final int PCDATA = TokenTypes.METHOD_DEF;
-    public static final int PROCESSING_INSTRUCTION = TokenTypes.PACKAGE_DEF;
+    public static final int PCDATA = TokenTypes.VARIABLE_DEF;
+    public static final int PROCESSING_INSTRUCTION = TokenTypes.ANNOTATIONS;
     public static final int PROCESSING_TARGET = TokenTypes.ANNOTATION;
     public static final int PROCESSING_DATA = TokenTypes.ANNOTATION_DEF;
     public static final int SKIPPED_ENTITY = GeneratedJavaTokenTypes.SL_COMMENT;

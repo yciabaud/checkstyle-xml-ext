@@ -15,7 +15,6 @@ import com.puppycrawl.tools.checkstyle.api.LocalizedMessage;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.api.Utils;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.Arrays;
@@ -149,12 +148,12 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
             InputSource document = new InputSource();
             document.setCharacterStream(new StringReader(fullText));
             
-            final DetailAST rootAST = XmlTreeWalker.parse(document);
+            final DetailAST rootAST = XmlTreeWalker.parse(document, aFile);
             walk(rootAST, contents);
         }
         catch (final Throwable err) {
-            Utils.getExceptionLogger().debug("Throwable occured.", err);
             err.printStackTrace();
+            Utils.getExceptionLogger().debug("Throwable occured.", err);
             getMessageCollector().add(
                 new LocalizedMessage(
                     0,
@@ -310,10 +309,12 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
      */
     private void notifyVisit(DetailAST aAST)
     {
-        final Collection<Check> visitors =
-            mTokenToChecks.get(TokenTypes.getTokenName(aAST.getType()));
-        for (Check c : visitors) {
-            c.visitToken(aAST);
+        if(aAST.getType() != 0){
+            final Collection<Check> visitors =
+                mTokenToChecks.get(TokenTypes.getTokenName(aAST.getType()));
+            for (Check c : visitors) {
+                c.visitToken(aAST);
+            }
         }
     }
 
@@ -325,10 +326,12 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
      */
     private void notifyLeave(DetailAST aAST)
     {
-        final Collection<Check> visitors =
-            mTokenToChecks.get(TokenTypes.getTokenName(aAST.getType()));
-        for (Check ch : visitors) {
-            ch.leaveToken(aAST);
+        if(aAST.getType() != 0){
+            final Collection<Check> visitors =
+                mTokenToChecks.get(TokenTypes.getTokenName(aAST.getType()));
+            for (Check ch : visitors) {
+                ch.leaveToken(aAST);
+            }
         }
     }
 
@@ -343,13 +346,13 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
      *                 if parsing failed
      * @return the root of the AST
      */
-    public static DetailAST parse(InputSource source)
+    public static DetailAST parse(InputSource source, File file)
         throws IOException, XMLStreamException, SAXException
     {
        
        
         XMLReader reader = XMLReaderFactory.createXMLReader();
-        XmlContentHandler contentHandler = new XmlContentHandler();
+        XmlContentHandler contentHandler = new XmlContentHandler(file);
         reader.setContentHandler(contentHandler);
         
         reader.parse(source);

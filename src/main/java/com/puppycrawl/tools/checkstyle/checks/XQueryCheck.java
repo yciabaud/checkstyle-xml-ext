@@ -5,34 +5,31 @@ import com.puppycrawl.tools.checkstyle.api.Check;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import java.io.StringReader;
 import java.util.List;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
-import javax.xml.xpath.XPathFactoryConfigurationException;
+import javax.xml.transform.sax.SAXSource;
 import net.sf.saxon.Configuration;
-import net.sf.saxon.om.NamespaceConstant;
+import net.sf.saxon.om.DocumentInfo;
 import net.sf.saxon.om.NodeInfo;
+import net.sf.saxon.query.DynamicQueryContext;
+import net.sf.saxon.query.StaticQueryContext;
+import net.sf.saxon.query.XQueryExpression;
 import net.sf.saxon.tinytree.TinyTree;
-import net.sf.saxon.xpath.XPathFactoryImpl;
+import net.sf.saxon.trans.XPathException;
 import org.xml.sax.InputSource;
 
 /**
  *
  * @author YCIABAUD
  */
-public class XPathCheck extends Check{
+public class XQueryCheck extends Check {
 
     private static final int DEFAULT_MAX = 100;
     private int max = DEFAULT_MAX;
-    
     private int min = 0;
-    
     private String expression;
-    
-    private XPathExpression xPathExpression;
-        
+    private XQueryExpression xQueryExpression;
+    private StaticQueryContext sqc;
+    private DynamicQueryContext env;
+
     @Override
     public int[] getDefaultTokens() {
         return new int[]{XmlTokenTypes.DOCUMENT};
@@ -41,67 +38,59 @@ public class XPathCheck extends Check{
     @Override
     public void init() {
         super.init();
-                
-        //création du XPath 
-        XPathFactory fabrique = null;
+
+        Configuration c = new Configuration();
+        c.setLineNumbering(true);
+        
         try {
-            System.setProperty("javax.xml.xpath.XPathFactory:"+NamespaceConstant.OBJECT_MODEL_SAXON, "net.sf.saxon.xpath.XPathFactoryImpl");
-            fabrique = XPathFactory.newInstance(NamespaceConstant.OBJECT_MODEL_SAXON);
-            ((XPathFactoryImpl)fabrique).getConfiguration().setLineNumbering(true);
-        } catch (XPathFactoryConfigurationException ex) {
-            log(0, "XPath engine error" + ex.getMessage());
+            sqc = new StaticQueryContext(c);
+            env = new DynamicQueryContext(c);
+            xQueryExpression = sqc.compileQuery(expression);
+        } catch (XPathException ex) {
+            log(0, "Invalid XQuery request: " + ex.getMessage());
             ex.printStackTrace();
             return;
         }
-        XPath xpath = fabrique.newXPath();
-        
-        try {
-            //évaluation de l'expression XPath
-            xPathExpression = xpath.compile(expression);
-        } catch (XPathExpressionException ex) {
-            log(0, "Invalid XPath expression: " + expression);
-            ex.printStackTrace();
-        }
-        
+
     }
 
-    
-    
     @Override
     public void visitToken(DetailAST aAST) {
 
-        if(getFileContents() == null){
+        if (getFileContents() == null) {
             log(aAST.getLineNo(),
-                "no XML document available in this context");
-            
+                    "no XML document available in this context");
+
             return;
         }
-        
-        if(xPathExpression == null){
+
+        if (xQueryExpression == null) {
             log(aAST.getLineNo(),
-                "no XPath expression available in this context");
-            
+                    "no XQuery expression available in this context");
+
             return;
         }
-       
+
         List resultat = null;
-        try {
+        
+        try{
             final String fullText = getFileContents().getText().getFullText().toString();
             InputSource document = new InputSource();
             document.setCharacterStream(new StringReader(fullText));
-            resultat = (List) xPathExpression.evaluate(document, XPathConstants.NODESET);
-        } catch (XPathExpressionException ex) {
-            log(aAST.getLineNo(),
-                "XPath evaluation failed: " + ex.getMessage());
+
+            DocumentInfo di = sqc.buildDocument(new SAXSource(document));
+            env.setContextItem(di.getRoot());
+
+            resultat = xQueryExpression.evaluate(env);   
+        } catch (XPathException ex) {
+            log(0, "Invalid XQuery expression: " + expression);
             ex.printStackTrace();
-            
-            return;
         }
-        
+
+
         int nbMatches = resultat != null ? resultat.size() : 0;
-        if( nbMatches < min || nbMatches > max){
-           
-            for(int i=max; i<resultat.size(); i++){
+        if (nbMatches < min || nbMatches > max) {
+             for(int i=max; i<resultat.size(); i++){
                 int line = aAST.getLineNo();
                 int col = aAST.getColumnNo();
 
@@ -111,12 +100,12 @@ public class XPathCheck extends Check{
                 }
                 log(line,
                     col,
-                    "xpath.invalidPath",
+                    "xquery.invalidPath",
                     aAST.getText(),
                     expression, nbMatches, min, max);
             }
         }
-        
+
     }
 
     public void setMax(int max) {
