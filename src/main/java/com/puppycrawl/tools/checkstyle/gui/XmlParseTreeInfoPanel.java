@@ -137,7 +137,7 @@ public class XmlParseTreeInfoPanel extends JPanel {
                 XmlMain.frame.setTitle("Checkstyle : " + aFile.getName());
                 final FileText text = new FileText(aFile.getAbsoluteFile(),
                                                    getEncoding());
-                final DetailAST parseTree = parseFile(text);
+                final DetailAST parseTree = parseFile(text, aFile);
                 mParseTreeModel.setParseTree(parseTree);
                 mCurrentFile = aFile;
                 mLastDirectory = aFile.getParentFile();
@@ -176,21 +176,7 @@ public class XmlParseTreeInfoPanel extends JPanel {
         }
     }
 
-    /**
-     * Parses a file and returns the parse tree.
-     * @param aFileName the file to parse
-     * @return the root node of the parse tree
-     * @throws IOException if the file cannot be opened
-     * @throws XMLStreamException if the file is not a valid XML source
-     * @throws SAXException if the file is not a valid XML source
-     * @deprecated Use {@link #parseFile(FileText)} instead
-     */
-    @Deprecated
-    public static DetailAST parseFile(String aFileName) throws IOException, XMLStreamException, SAXException
-            
-    {
-        return parseFile(new FileText(new File(aFileName), getEncoding()));
-    }
+
 
     /**
      * Parses a file and returns the parse tree.
@@ -200,13 +186,13 @@ public class XmlParseTreeInfoPanel extends JPanel {
      * @throws XMLStreamException if the file is not a valid XML source
      * @throws SAXException if the file is not a valid XML source
      */
-    public static DetailAST parseFile(FileText aText) throws IOException, XMLStreamException, SAXException
+    public static DetailAST parseFile(FileText aText, File aFile) throws IOException, XMLStreamException, SAXException
     {
         final FileContents contents = new FileContents(aText);
         final String fullText = contents.getText().getFullText().toString();
         InputSource document = new InputSource();
         document.setCharacterStream(new StringReader(fullText));
-        return XmlTreeWalker.parse(document);
+        return XmlTreeWalker.parse(document, aFile);
     }
 
     /**

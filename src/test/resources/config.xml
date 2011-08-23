@@ -3,11 +3,74 @@
     "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
     "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
 <module name="Checker">
-  <module name="XmlTreeWalker">
-    <module name="XPathCheck">
-      <property name="expression" value="//patient"/>
-      <property name="min" value="1"/>
-      <property name="max" value="5"/>
+    <module name="FileLength">
+        <property name="max" value="60000"/>
+        <property name="fileExtensions" value="xml"/>
     </module>
-  </module>
+    <module name="XmlTreeWalker">
+
+        <!-- Variables et nom du NAP cohérents -->
+        <module name="XQueryCheck">
+            <property name="expression" value="
+                for $x      in //NET_NAP_NETWORK_ACCESS_PT, 
+                    $name   in $x/NAP_NAME/@value, 
+                    $server in $x/NET_OND_OUTGOING_NAP_DETAILS/OND_SERVER_ADDRESS/@value, 
+                    $port   in $x/NET_OND_OUTGOING_NAP_DETAILS/OND_CONNECTION_PORT/@value 
+                where $server != concat('%NAP_', $name, '_IP_ADDR%')
+                and   $port   != concat('%NAP_', $name, '_PORT%')
+                return $x
+            "/>
+            <property name="min" value="0"/>
+            <property name="max" value="0"/>
+            <message key="xquery.invalidPath"
+             value="Variables et nom du NAP incoherents ou mal formes."
+             />
+        </module>
+        
+        <!-- Variables et nom des actus cohérents -->
+        <module name="XQueryCheck">
+            <property name="expression" value="
+                for $x      in /CTL_DATA/CTL_PRV_PROPERTY_VALUE, 
+                    $name   in $x/PRV_VALUE/@value, 
+                    $input  in $x/CTL_PRV_PROPERTY_VALUE/CTL_PRV_PROPERTY_VALUE[PRV_PRN_NAME_SK/@value = 'RENEWAL_INPUT_PATH']/PRV_VALUE/@value, 
+                    $output in $x/CTL_PRV_PROPERTY_VALUE/CTL_PRV_PROPERTY_VALUE[PRV_PRN_NAME_SK/@value = 'RENEWAL_OUTPUT_PATH']/PRV_VALUE/@value,
+                    $file   in $x/CTL_PRV_PROPERTY_VALUE/CTL_PRV_PROPERTY_VALUE[PRV_PRN_NAME_SK/@value = 'RENEWAL_FILE_NAME']/PRV_VALUE/@value
+                where $input  != concat('%ACTU_', $name, '_IN%')
+                and   $output != concat('%ACTU_', $name, '_OUT%')
+                and   $file   != concat('%ACTU_', $name, '_NAME_OUT%')
+                return $x
+            "/>
+            <property name="min" value="0"/>
+            <property name="max" value="0"/>
+            <message key="xquery.invalidPath"
+             value="Variables et nom des actus incoherents ou mal formes."
+             />
+        </module>
+        
+        <!-- XML File Name -->
+        <!--module name="TypeName">
+            <property name="format" value="^(?:SiteCfg_[^#]+#V01\.[^\.]+|^((?!SiteCfg_)).+)\.xml$"/>
+            <message key="name.invalidPattern"
+             value="Nom de fichier XML incorrect."
+             />
+        </module-->
+        
+        <!-- XML Path -->
+        <!--module name="PackageName">
+            <property name="format" value="^[a-zA-Z0-9:.\\/_]{10,200}$"/>
+            <message key="name.invalidPattern"
+             value="Chemin de fichier XML incorrect."
+             />
+        </module-->
+        
+        <!-- XML max child -->
+        <!--module name="XPathCheck">
+            <property name="expression" value="//*[count(*)>=100]"/>
+            <property name="min" value="0"/>
+            <property name="max" value="0"/>
+            <message key="xpath.invalidPath"
+             value="Trop de noeuds de meme niveau."
+             />
+        </module-->
+    </module>
 </module>

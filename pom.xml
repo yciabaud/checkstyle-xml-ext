@@ -5,7 +5,7 @@
 
     <groupId>com.puppycrawl.tools</groupId>
     <artifactId>checkstyle-xml-extension</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>checkstyle-xml-extension</name>
@@ -46,6 +46,19 @@
             <artifactId>junit</artifactId>
             <version>4.8.2</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.saxon</groupId>
+            <artifactId>saxon</artifactId>
+            <version>9.1.0.8</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.saxon</groupId>
+            <artifactId>saxon</artifactId>
+            <version>9.1.0.8</version>
+            <type>jar</type>
+            <classifier>xpath</classifier>
         </dependency>
     </dependencies>
 </project>
