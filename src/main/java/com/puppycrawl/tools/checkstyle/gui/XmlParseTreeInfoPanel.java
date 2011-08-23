@@ -36,7 +36,7 @@ public class XmlParseTreeInfoPanel extends JPanel {
     /** For Serialisation that will never happen. */
     private static final long serialVersionUID = -4243405131202059043L;
     private final JTreeTable mTreeTable;
-    private final ParseTreeModel mParseTreeModel;
+    private final XmlParseTreeModel mParseTreeModel;
     private final JTextArea mJTextArea;
     private File mLastDirectory = null;
     private File mCurrentFile = null;
@@ -214,7 +214,7 @@ public class XmlParseTreeInfoPanel extends JPanel {
         setLayout(new BorderLayout());
 
         final DetailAST treeRoot = null;
-        mParseTreeModel = new ParseTreeModel(treeRoot);
+        mParseTreeModel = new XmlParseTreeModel(treeRoot);
         mTreeTable = new JTreeTable(mParseTreeModel);
         final JScrollPane sp = new JScrollPane(mTreeTable);
         this.add(sp, BorderLayout.NORTH);

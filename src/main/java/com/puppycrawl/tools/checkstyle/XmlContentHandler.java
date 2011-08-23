@@ -1,6 +1,5 @@
 package com.puppycrawl.tools.checkstyle;
 
-import antlr.ASTFactory;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import java.io.File;
 import org.apache.commons.logging.Log;
@@ -92,7 +91,11 @@ public class XmlContentHandler implements ContentHandler {
         token.setText(file.getParent());
         pathIdent.initialize(token);
         path.addChild(pathIdent);
-        path.addChild(new DetailAST());
+        
+        // Fake child to match Java grammar structure
+        pathIdent = new DetailAST();
+        pathIdent.initialize(token);
+        path.addChild(pathIdent);
         
         // Name = Type
         token = new XmlToken();
