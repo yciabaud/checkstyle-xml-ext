@@ -18,7 +18,7 @@
 
     <build>
         <plugins>
-			<!-- Used to set custom properties -->
+	    <!-- Used to set custom properties -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>

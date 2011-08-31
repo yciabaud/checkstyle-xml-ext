@@ -1,18 +1,36 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.puppycrawl.tools.checkstyle;
+////////////////////////////////////////////////////////////////////////////////
+// checkstyle: Checks Java source code for adherence to a set of rules.
+// Copyright (C) 2001-2011  Oliver Burn
+//
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+//
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+////////////////////////////////////////////////////////////////////////////////
+package com.puppycrawl.tools.checkstyle.api;
 
 import com.google.common.collect.ImmutableMap;
-import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.grammars.GeneratedJavaTokenTypes;
 import java.lang.reflect.Field;
 import java.util.ResourceBundle;
 
 /**
- *
- * @author vista
+ * Contains the constants for all the tokens contained in the Abstract
+ * Syntax Tree.
+ * 
+ * This is a mapping between XML tokens and classical checkstyle token types.
+ * 
+ * @author Yoann Ciabaud<y.ciabaud@gmail.com>
+ * @see TokenTypes
  */
 public final class XmlTokenTypes {
     
@@ -29,11 +47,6 @@ public final class XmlTokenTypes {
      * file.  It's children are an optional package definition, zero
      * or more import statements, and one or more class or interface
      * definitions.
-     *
-     * @see #PACKAGE_DEF
-     * @see #IMPORT
-     * @see #CLASS_DEF
-     * @see #INTERFACE_DEF
      **/
     public static final int EOF = TokenTypes.EOF;
     
@@ -56,12 +69,12 @@ public final class XmlTokenTypes {
     // The interesting code goes here
     ////////////////////////////////////////////////////////////////////////
 
-    /** maps from a token name to value */
+    /** Maps from a token name to value */
     private static final ImmutableMap<String, Integer> TOKEN_NAME_TO_VALUE;
-    /** maps from a token value to name */
+    /** Maps from a token value to name */
     private static final String[] TOKEN_VALUE_TO_NAME;
 
-    // initialise the constants
+    // Initialise the constants
     static {
         final ImmutableMap.Builder<String, Integer> builder =
             ImmutableMap.builder();

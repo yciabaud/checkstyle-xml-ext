@@ -1,6 +1,25 @@
+////////////////////////////////////////////////////////////////////////////////
+// checkstyle: Checks Java source code for adherence to a set of rules.
+// Copyright (C) 2001-2011  Oliver Burn
+//
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+//
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+////////////////////////////////////////////////////////////////////////////////
+
 package com.puppycrawl.tools.checkstyle.checks;
 
-import com.puppycrawl.tools.checkstyle.XmlTokenTypes;
+import com.puppycrawl.tools.checkstyle.api.XmlTokenTypes;
 import com.puppycrawl.tools.checkstyle.api.Check;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import java.io.StringReader;
@@ -12,29 +31,67 @@ import net.sf.saxon.om.NodeInfo;
 import net.sf.saxon.query.DynamicQueryContext;
 import net.sf.saxon.query.StaticQueryContext;
 import net.sf.saxon.query.XQueryExpression;
-import net.sf.saxon.tinytree.TinyTree;
 import net.sf.saxon.trans.XPathException;
 import org.xml.sax.InputSource;
 
 /**
- *
- * @author YCIABAUD
+ * <p>
+ * Checks for the number of nodes matched by a XQuery expression .
+ * </p>
+ * <p>
+ * Business: Implement logical rules to match your needs.
+ * </p>
+ * <p>
+ * An example of how to configure the check so that it accepts files with at
+ * no results for the following XQuery :
+ * </p>
+ * <pre>
+ * &lt;module name="XQueryCheck"&gt;
+ *    &lt;property name="expression" value="
+ *              for $x      in //ELT, 
+ *                  $name   in $x/NAP_NAME/@value, 
+ *                  $server in $x/NET_OND_OUTGOING_NAP_DETAILS/OND_SERVER_ADDRESS/@value, 
+ *                  $port   in $x/NET_OND_OUTGOING_NAP_DETAILS/OND_CONNECTION_PORT/@value 
+ *              where $server != concat('%NAP_', $name, '_IP_ADDR%')
+ *              and   $port   != concat('%NAP_', $name, '_PORT%')
+ *              return $x
+ *          "/&gt;
+ *    &lt;property name="min" value="0"/&gt;
+ *    &lt;property name="max" value="0"/&gt;
+ * &lt;/module&gt;
+ * </pre>
+ * @author Yoann Ciabaud<y.ciabaud@gmail.com>
  */
 public class XQueryCheck extends Check {
 
-    private static final int DEFAULT_MAX = 100;
-    private int max = DEFAULT_MAX;
-    private int min = 0;
+    /** Default value for min and max. */
+    private static final int DEFAULT_VALUE = 0;
+    
+    /** Maximum number occurencies of the expression. */
+    private int max = DEFAULT_VALUE;
+    
+    /** Minimum number occurencies of the expression. */
+    private int min = DEFAULT_VALUE;
+    
+    /** String value of XQuery expression*/
     private String expression;
+    
+    /** XQuery expression. */
     private XQueryExpression xQueryExpression;
+    
+    /** Static query context */
     private StaticQueryContext sqc;
+    
+    /** Dynamic query context */
     private DynamicQueryContext env;
 
+    /** {@inheritDoc} */
     @Override
     public int[] getDefaultTokens() {
         return new int[]{XmlTokenTypes.DOCUMENT};
     }
 
+    /** {@inheritDoc} */
     @Override
     public void init() {
         super.init();
@@ -54,6 +111,7 @@ public class XQueryCheck extends Check {
 
     }
 
+    /** {@inheritDoc} */
     @Override
     public void visitToken(DetailAST aAST) {
 
@@ -108,14 +166,26 @@ public class XQueryCheck extends Check {
 
     }
 
+    /**
+     * Setter of max.
+     * @param max the max value
+     */
     public void setMax(int max) {
         this.max = max;
     }
 
+    /**
+     * Setter of min.
+     * @param min the min value
+     */
     public void setMin(int min) {
         this.min = min;
     }
 
+    /**
+     * Setter of expression.
+     * @param expression the XQuery expression value
+     */
     public void setExpression(String expression) {
         this.expression = expression;
     }

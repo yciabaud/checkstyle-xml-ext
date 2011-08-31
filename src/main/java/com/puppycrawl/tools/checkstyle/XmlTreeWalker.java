@@ -1,3 +1,21 @@
+////////////////////////////////////////////////////////////////////////////////
+// checkstyle: Checks Java source code for adherence to a set of rules.
+// Copyright (C) 2001-2011  Oliver Burn
+//
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+//
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+////////////////////////////////////////////////////////////////////////////////
 package com.puppycrawl.tools.checkstyle;
 
 import com.google.common.collect.HashMultimap;
@@ -34,37 +52,38 @@ import org.xml.sax.helpers.XMLReaderFactory;
  * Responsible for walking an abstract syntax tree and notifying interested
  * checks at each each node.
  *
- * @author Yoann Ciabaud
- * @version 1.0
+ * @author Yoann Ciabaud<y.ciabaud@gmail.com>
+ * @see TreeWalker
  */
 public class XmlTreeWalker extends AbstractFileSetCheck {
 
-    /** maps from token name to checks */
+    /** Maps from token name to checks */
     private final Multimap<String, Check> mTokenToChecks =
         HashMultimap.create();
-    /** all the registered checks */
+    /** All the registered checks */
     private final Set<Check> mAllChecks = Sets.newHashSet();
 
-    /** a factory for creating submodules (i.e. the Checks) */
+    /** A factory for creating submodules (i.e. the Checks) */
     private ModuleFactory mModuleFactory;
 	
-    /** context of child components */
+    /** Context of child components */
     private Context mChildContext;
 
-    /** controls whether we should use recursive or iterative
+    /** 
+     * Controls whether we should use recursive or iterative
      * algorithm for tree processing.
      */
     private final boolean mRecursive;
 	
-    /** cache file **/
+    /** Cache file **/
     private PropertyCacheFile mCache = new PropertyCacheFile(null, null);
 
-    /** logger for debug purpose */
+    /** Logger for debug purpose */
     private static final Log LOG =
         LogFactory.getLog("com.puppycrawl.tools.checkstyle.TreeWalker");
 
     /**
-     * Creates a new <code>TreeWalker</code> instance.
+     * Creates a new <code>XmlTreeWalker</code> instance.
      */
     public XmlTreeWalker()
     {
@@ -83,13 +102,14 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
         }
     }
 	
-	/** @param aFileName the cache file */
+    /** @param aFileName the cache file */
     public void setCacheFile(String aFileName)
     {
         final Configuration configuration = getConfiguration();
         mCache = new PropertyCacheFile(configuration, aFileName);
     }
 
+    /** {@inheritDoc} */
     @Override
     public void finishLocalSetup()
     {
@@ -100,6 +120,7 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
         mChildContext = checkContext;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void setupChild(Configuration aChildConf)
         throws CheckstyleException
@@ -129,7 +150,7 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
         mModuleFactory = aModuleFactory;
     }
 
-
+    /** {@inheritDoc} */
     @Override
     protected void processFiltered(File aFile, List<String> aLines)
     {
@@ -360,6 +381,7 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
         return contentHandler.getAST();
     }
 
+    /** {@inheritDoc} */
     @Override
     public void destroy()
     {

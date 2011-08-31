@@ -1,66 +1,81 @@
+////////////////////////////////////////////////////////////////////////////////
+// checkstyle: Checks Java source code for adherence to a set of rules.
+// Copyright (C) 2001-2011  Oliver Burn
+//
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+//
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+////////////////////////////////////////////////////////////////////////////////
+
 package com.puppycrawl.tools.checkstyle;
 
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
+import com.puppycrawl.tools.checkstyle.api.XmlTokenTypes;
 import java.io.File;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.xml.sax.*;
+import org.xml.sax.Attributes;
+import org.xml.sax.ContentHandler;
+import org.xml.sax.Locator;
+import org.xml.sax.SAXException;
 import org.xml.sax.helpers.LocatorImpl;
 
 /**
- * @author smeric
- *
- * Exemple d'implementation extremement simplifiee d'un SAX XML ContentHandler. Le but de cet exemple
- * est purement pedagogique.
- * Very simple implementation sample for XML SAX ContentHandler.
+ * XML parser used to build an AST tree of a document.
+ * 
+ * @author Yoann Ciabaud<y.ciabaud@gmail.com>
  */
 public class XmlContentHandler implements ContentHandler {
 
+    /** Stores the location of the parser in the file. */
     private Locator locator;
     
+    /** Root of the AST tree. */
     private DetailAST root;
     
+    /** Pointer on the last parsed node. */
     private DetailAST currentNode;
     
+    /** Document beeing parsed. */
     private File file;
     
-    /** logger for debug purpose */
+    /** logger for debug purpose. */
     private static final Log LOG =
         LogFactory.getLog("com.puppycrawl.tools.checkstyle.XmlContentHandler");
 
     /**
-     * Constructeur par defaut. 
+     * Default constructor. 
      */
     public XmlContentHandler(File file) {
         super();
-        // On definit le locator par defaut.
+        
         locator = new LocatorImpl();
         root = null;
         this.file = file;
     }
 
-    /**
-     * Definition du locator qui permet a tout moment pendant l'analyse, de localiser
-     * le traitement dans le flux. Le locator par defaut indique, par exemple, le numero
-     * de ligne et le numero de caractere sur la ligne.
-     * @author smeric
-     * @param value le locator a utiliser.
-     * @see org.xml.sax.ContentHandler#setDocumentLocator(org.xml.sax.Locator)
-     */
+    /** {@inheritDoc} */
+    @Override
     public void setDocumentLocator(Locator value) {
         locator = value;
     }
 
-    /**
-     * Evenement envoye au demarrage du parse du flux xml.
-     * @throws SAXException en cas de probleme quelquonque ne permettant pas de
-     * se lancer dans l'analyse du document.
-     * @see org.xml.sax.ContentHandler#startDocument()
-     */
+    /** {@inheritDoc} */
+    @Override
     public void startDocument() throws SAXException {
-        LOG.debug("Debut de l'analyse du document");
+        LOG.debug("Starting XML parsing");
         
-        // XmlXmlToken
+        // XmlToken
         XmlToken token = new XmlToken();
         token.setLine(locator.getLineNumber());
         token.setColumn(locator.getColumnNumber());
@@ -116,24 +131,14 @@ public class XmlContentHandler implements ContentHandler {
         name.addChild(nameIdent);
     }
 
-    /**
-     * Evenement envoye a la fin de l'analyse du flux xml.
-     * @throws SAXException en cas de probleme quelquonque ne permettant pas de
-     * considerer l'analyse du document comme etant complete.
-     * @see org.xml.sax.ContentHandler#endDocument()
-     */
+    /** {@inheritDoc} */
     public void endDocument() throws SAXException {
-        LOG.debug("Fin de l'analyse du document");
+        LOG.debug("Ended parsing");
     }
 
-    /**
-     * Debut de traitement dans un espace de nommage.
-     * @param prefixe utilise pour cet espace de nommage dans cette partie de l'arborescence.
-     * @param URI de l'espace de nommage.
-     * @see org.xml.sax.ContentHandler#startPrefixMapping(java.lang.String, java.lang.String)
-     */
+    /** {@inheritDoc} */
     public void startPrefixMapping(String prefix, String URI) throws SAXException {
-        LOG.debug("Traitement de l'espace de nommage : " + URI + ", prefixe choisi : " + prefix);
+        LOG.debug("Prefix mapping : " + URI + ", chosen prefix : " + prefix);
         
         // XmlToken
         XmlToken token = new XmlToken();
@@ -177,26 +182,15 @@ public class XmlContentHandler implements ContentHandler {
         
     }
 
-    /**
-     * Fin de traitement de l'espace de nommage.
-     * @param prefixe le prefixe choisi a l'ouverture du traitement de l'espace nommage.
-     * @see org.xml.sax.ContentHandler#endPrefixMapping(java.lang.String)
-     */
+    /** {@inheritDoc} */
     public void endPrefixMapping(String prefix) throws SAXException {
-        LOG.debug("Fin de traitement de l'espace de nommage : " + prefix);
+        LOG.debug("End of prefix mapping : " + prefix);
     }
 
-    /**
-     * Evenement recu a chaque fois que l'analyseur rencontre une balise xml ouvrante.
-     * @param nameSpaceURI l'url de l'espace de nommage.
-     * @param localName le nom local de la balise.
-     * @param rawName nom de la balise en version 1.0 <code>nameSpaceURI + ":" + localName</code>
-     * @throws SAXException si la balise ne correspond pas a ce qui est attendu,
-     * comme par exemple non respect d'une dtd.
-     * @see org.xml.sax.ContentHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)
-     */
-    public void startElement(String nameSpaceURI, String localName, String rawName, Attributes attributs) throws SAXException {
-        LOG.debug("Ouverture de la balise : " + localName);
+    /** {@inheritDoc} */
+    public void startElement(String nameSpaceURI, String localName,
+            String rawName, Attributes attributs) throws SAXException {
+        LOG.debug("Opening element : " + localName);
         
         int col = locator.getColumnNumber();
         
@@ -227,12 +221,8 @@ public class XmlContentHandler implements ContentHandler {
         ident.initialize(token);
         child.addChild(ident);
 
-        if (!"".equals(nameSpaceURI)) { // espace de nommage particulier
-            LOG.debug("  appartenant a l'espace de nom : " + nameSpaceURI);
-        }
-
         // Attributes
-        LOG.debug("  Attributs de la balise : ");
+        LOG.debug("  Attributes : ");
         DetailAST attrs = new DetailAST();
         token = new XmlToken();
         token.setLine(locator.getLineNumber());
@@ -243,7 +233,7 @@ public class XmlContentHandler implements ContentHandler {
         attrs.initialize(token);
         child.addChild(attrs);
 
-        for (int index = 0; index < attributs.getLength(); index++) { // on parcourt la liste des attributs
+        for (int index = 0; index < attributs.getLength(); index++) {
             
             // Attribut
             DetailAST attr = new DetailAST();
@@ -254,7 +244,8 @@ public class XmlContentHandler implements ContentHandler {
             token.setType(XmlTokenTypes.ATTRIBUTE);
             attr.initialize(token);
             attrs.addChild(attr);
-            LOG.debug("     - " + attributs.getLocalName(index) + " = " + attributs.getValue(index));
+            LOG.debug("     - " + attributs.getLocalName(index) + " = "
+                    + attributs.getValue(index));
             
             // Ident
             ident = new DetailAST();
@@ -277,37 +268,25 @@ public class XmlContentHandler implements ContentHandler {
             attr.addChild(value);
             
             // Go forward
-            col += attributs.getLocalName(index).length() + attributs.getValue(index).length() + 2;
+            col += attributs.getLocalName(index).length()
+                    + attributs.getValue(index).length() + 2;
         }
         
         // This node is now he current node
         currentNode = child;
     }
 
-    /**
-     * Evenement recu a chaque fermeture de balise.
-     * @see org.xml.sax.ContentHandler#endElement(java.lang.String, java.lang.String, java.lang.String)
-     */
-    public void endElement(String nameSpaceURI, String localName, String rawName) throws SAXException {
-        LOG.debug("Fermeture de la balise : " + localName);
-
-        if (!"".equals(nameSpaceURI)) { // name space non null
-            LOG.debug("appartenant a l'espace de nommage : " + localName);
-        }
+    /** {@inheritDoc} */
+    public void endElement(String nameSpaceURI, String localName,
+            String rawName) throws SAXException {
+        LOG.debug("End of the element : " + localName);
         
         // Go to the parent
         currentNode = currentNode.getParent();
         
     }
 
-    /**
-     * Evenement recu a chaque fois que l'analyseur rencontre des caracteres (entre
-     * deux balises).
-     * @param ch les caracteres proprement dits.
-     * @param start le rang du premier caractere a traiter effectivement.
-     * @param end le rang du dernier caractere a traiter effectivement
-     * @see org.xml.sax.ContentHandler#characters(char[], int, int)
-     */
+    /** {@inheritDoc} */
     public void characters(char[] ch, int start, int end) throws SAXException {
         
         String value = new String(ch, start, end);
@@ -332,21 +311,12 @@ public class XmlContentHandler implements ContentHandler {
         
     }
 
-    /**
-     * Recu chaque fois que des caracteres d'espacement peuvent etre ignores au sens de
-     * XML. C'est a dire que cet evenement est envoye pour plusieurs espaces se succedant,
-     * les tabulations, et les retours chariot se succedants ainsi que toute combinaison de ces
-     * trois types d'occurrence.
-     * @param ch les caracteres proprement dits.
-     * @param start le rang du premier caractere a traiter effectivement.
-     * @param end le rang du dernier caractere a traiter effectivement
-     * @see org.xml.sax.ContentHandler#ignorableWhitespace(char[], int, int)
-     */
+    /** {@inheritDoc} */
     public void ignorableWhitespace(char[] ch, int start, int end) throws SAXException {
         
         String value = new String(ch, start, end);
         
-        LOG.debug("espaces inutiles rencontres : ..." + value + "...");
+        LOG.debug("ignorable whitespace : ..." + value + "...");
         
         // XmlToken
         XmlToken token = new XmlToken();
@@ -365,16 +335,10 @@ public class XmlContentHandler implements ContentHandler {
         currentNode.addChild(child);
     }
 
-    /**
-     * Rencontre une instruction de fonctionnement.
-     * @param target la cible de l'instruction de fonctionnement.
-     * @param data les valeurs associees a cette cible. En general, elle se presente sous la forme 
-     * d'une serie de paires nom/valeur.
-     * @see org.xml.sax.ContentHandler#processingInstruction(java.lang.String, java.lang.String)
-     */
+    /** {@inheritDoc} */
     public void processingInstruction(String target, String data) throws SAXException {
-        LOG.debug("Instruction de fonctionnement : " + target);
-        LOG.debug("  dont les arguments sont : " + data);
+        LOG.debug("Processing instruction : " + target);
+        LOG.debug("  Args : " + data);
         
         // XmlToken
         XmlToken token = new XmlToken();
@@ -418,16 +382,8 @@ public class XmlContentHandler implements ContentHandler {
         currentNode.addChild(child);
     }
 
-    /**
-     * Recu a chaque fois qu'une balise est evitee dans le traitement a cause d'un
-     * probleme non bloque par le parser. Pour ma part je ne pense pas que vous
-     * en ayez besoin dans vos traitements.
-     * @see org.xml.sax.ContentHandler#skippedEntity(java.lang.String)
-     */
-    public void skippedEntity(String text) throws SAXException {
-        // Je ne fais rien, ce qui se passe n'est pas franchement normal.
-        // Pour eviter cet evenement, le mieux est quand meme de specifier une dtd pour vos
-        // documents xml et de les faire valider par votre parser.        
+    /** {@inheritDoc} */
+    public void skippedEntity(String text) throws SAXException {      
         
         // XmlToken
         XmlToken token = new XmlToken();
@@ -446,6 +402,7 @@ public class XmlContentHandler implements ContentHandler {
         currentNode.addChild(child);
     }
 
+    /** {@inheritDoc} */
     public DetailAST getAST() {
         return root;
     }
