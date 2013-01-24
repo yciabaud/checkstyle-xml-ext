@@ -2,190 +2,226 @@
 
 <document>
 
-  <properties>
-    <title>XML</title>
-    <author>Yoann Ciabaud</author>
-  </properties>
+    <properties>
+        <title>XML</title>
+        <author>Yoann Ciabaud</author>
+    </properties>
 
-  <body>
-    <section name="XPath">
-      <subsection name="Description">
-        <p>
-          A check for detecting XML nodes that match a supplied
-          XPath expression. Works inly with XML files.
-        </p>
+    <body>
+        <section name="XPath">
+            <subsection name="Description">
+                <p>
+                    A check for detecting XML nodes that match a supplied
+                    XPath expression. Works only with XML files.
+                </p>
 
-        <p>
-          Rationale: This check can be used to prototype checks and to
-          find common bad practice such as putting too many child at
-          the same node level, writing nodes with too many attributes, etc.
-        </p>
-      </subsection>
+                <p>
+                    Rationale: This check can be used to prototype checks and to
+                    find common bad practice such as putting too many child at
+                    the same node level, writing nodes with too many attributes, etc.
+                </p>
+            </subsection>
 
-      <subsection name="Properties">
-        <table>
-          <tr>
-            <th>name</th>
-            <th>description</th>
-            <th>type</th>
-            <th>default value</th>
-          </tr>
-          <tr>
-            <td>expression</td>
-            <td>illegal pattern</td>
-            <td><a href="property_types.html#xpath">XPath expression</a></td>
-            <td>No default value</td>
-          </tr>
-          <tr>
-            <td>message</td>
-            <td>message which is used to notify about violations,
-            if empty then default(hard-coded) message is used.</td>
-            <td><a href="property_types.html#String">String</a></td>
-            <td><span class="default">&quot;&quot;</span>(empty)</td>
-          </tr>
-          <tr>
-            <td>minimum</td>
-            <td>The minimum number of matches required in each file.</td>
-            <td><a href="property_types.html#integer">Integer</a></td>
-            <td><span class="default">0</span></td>
-          </tr>
-          <tr>
-            <td>maximum</td>
-            <td>The maximum number of matches required in each file.</td>
-            <td><a href="property_types.html#integer">Integer</a></td>
-            <td><span class="default">0</span></td>
-          </tr>
-          <tr>
-            <td>fileExtensions</td>
-            <td>file type extension of files to process</td>
-            <td><a href="property_types.html#stringSet">String Set</a></td>
-            <td><span class="default">{}</span></td>
-          </tr>
-        </table>
-      </subsection>
+            <subsection name="Properties">
+                <table>
+                    <tr>
+                        <th>name</th>
+                        <th>description</th>
+                        <th>type</th>
+                        <th>default value</th>
+                    </tr>
+                    <tr>
+                        <td>expression</td>
+                        <td>illegal pattern</td>
+                        <td>
+                            <a href="property_types.html#xpath">XPath expression</a>
+                        </td>
+                        <td>No default value</td>
+                    </tr>
+                    <tr>
+                        <td>message</td>
+                        <td>message which is used to notify about violations,
+                            if empty then default(hard-coded) message is used.
+                        </td>
+                        <td>
+                            <a href="property_types.html#String">String</a>
+                        </td>
+                        <td><span class="default">&quot;&quot;</span>(empty)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>minimum</td>
+                        <td>The minimum number of matches required in each file.</td>
+                        <td>
+                            <a href="property_types.html#integer">Integer</a>
+                        </td>
+                        <td>
+                            <span class="default">0</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>maximum</td>
+                        <td>The maximum number of matches required in each file.</td>
+                        <td>
+                            <a href="property_types.html#integer">Integer</a>
+                        </td>
+                        <td>
+                            <span class="default">0</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>fileExtensions</td>
+                        <td>file type extension of files to process</td>
+                        <td>
+                            <a href="property_types.html#stringSet">String Set</a>
+                        </td>
+                        <td>
+                            <span class="default">{}</span>
+                        </td>
+                    </tr>
+                </table>
+            </subsection>
 
-      <subsection name="Examples">
-        <p>
-          To configure the check so that it accepts file with less
-          than 1500 child for a node:
-        </p>
-        <source>
-&lt;module name="XPathCheck"&gt;
-    &lt;property name="expression" value="//*[count(*)>=100]"/&gt;
-    &lt;!-- next line not required as 0 is the default --&gt;
-    &lt;property name="min" value="0"/&gt;
-    &lt;property name="max" value="1500"/&gt;
-&lt;/module&gt;
-        </source>
+            <subsection name="Examples">
+                <p>
+                    To configure the check so that it accepts file with less
+                    than 1500 child for a node:
+                </p>
+                <source>
+                    &lt;module name="XPathCheck"&gt;
+                    &lt;property name="expression" value="//*[count(*)>=100]"/&gt;
+                    &lt;!-- next line not required as 0 is the default --&gt;
+                    &lt;property name="min" value="0"/&gt;
+                    &lt;property name="max" value="1500"/&gt;
+                    &lt;/module&gt;
+                </source>
 
-      </subsection>
+            </subsection>
 
-      <subsection name="Package">
-        <p>
-          com.puppycrawl.tools.checkstyle.checks
-        </p>
-      </subsection>
+            <subsection name="Package">
+                <p>
+                    com.puppycrawl.tools.checkstyle.checks
+                </p>
+            </subsection>
 
-      <subsection name="Parent Module">
-        <p>
-          <a href="config.html#xmltreeparser">XmlTreeParser</a>
-        </p>
-      </subsection>
-    </section>
+            <subsection name="Parent Module">
+                <p>
+                    <a href="config.html#xmltreeparser">XmlTreeParser</a>
+                </p>
+            </subsection>
+        </section>
 
 
-    <section name="XQuery">
-      <subsection name="Description">
-        <p>
-          A check for detecting XML nodes that match a supplied
-          XQuery expression. Works inly with XML files.
-        </p>
+        <section name="XQuery">
+            <subsection name="Description">
+                <p>
+                    A check for detecting XML nodes that match a supplied
+                    XQuery expression. Works inly with XML files.
+                </p>
 
-        <p>
-          Business This check can be used to prototype checks and to
-          find forbidden complicated practice such as make a attribute
-          value matching another, etc.
-        </p>
-      </subsection>
+                <p>
+                    Business This check can be used to prototype checks and to
+                    find forbidden complicated practice such as make a attribute
+                    value matching another, etc.
+                </p>
+            </subsection>
 
-      <subsection name="Properties">
-        <table>
-          <tr>
-            <th>name</th>
-            <th>description</th>
-            <th>type</th>
-            <th>default value</th>
-          </tr>
-          <tr>
-            <td>expression</td>
-            <td>illegal pattern</td>
-            <td><a href="property_types.html#xquery">XQuery expression</a></td>
-            <td>No default value</td>
-          </tr>
-          <tr>
-            <td>message</td>
-            <td>message which is used to notify about violations,
-            if empty then default(hard-coded) message is used.</td>
-            <td><a href="property_types.html#String">String</a></td>
-            <td><span class="default">&quot;&quot;</span>(empty)</td>
-          </tr>
-          <tr>
-            <td>minimum</td>
-            <td>The minimum number of matches required in each file.</td>
-            <td><a href="property_types.html#integer">Integer</a></td>
-            <td><span class="default">0</span></td>
-          </tr>
-          <tr>
-            <td>maximum</td>
-            <td>The maximum number of matches required in each file.</td>
-            <td><a href="property_types.html#integer">Integer</a></td>
-            <td><span class="default">0</span></td>
-          </tr>
-          <tr>
-            <td>fileExtensions</td>
-            <td>file type extension of files to process</td>
-            <td><a href="property_types.html#stringSet">String Set</a></td>
-            <td><span class="default">{}</span></td>
-          </tr>
-        </table>
-      </subsection>
+            <subsection name="Properties">
+                <table>
+                    <tr>
+                        <th>name</th>
+                        <th>description</th>
+                        <th>type</th>
+                        <th>default value</th>
+                    </tr>
+                    <tr>
+                        <td>expression</td>
+                        <td>illegal pattern</td>
+                        <td>
+                            <a href="property_types.html#xquery">XQuery expression</a>
+                        </td>
+                        <td>No default value</td>
+                    </tr>
+                    <tr>
+                        <td>message</td>
+                        <td>message which is used to notify about violations,
+                            if empty then default(hard-coded) message is used.
+                        </td>
+                        <td>
+                            <a href="property_types.html#String">String</a>
+                        </td>
+                        <td><span class="default">&quot;&quot;</span>(empty)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>minimum</td>
+                        <td>The minimum number of matches required in each file.</td>
+                        <td>
+                            <a href="property_types.html#integer">Integer</a>
+                        </td>
+                        <td>
+                            <span class="default">0</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>maximum</td>
+                        <td>The maximum number of matches required in each file.</td>
+                        <td>
+                            <a href="property_types.html#integer">Integer</a>
+                        </td>
+                        <td>
+                            <span class="default">0</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>fileExtensions</td>
+                        <td>file type extension of files to process</td>
+                        <td>
+                            <a href="property_types.html#stringSet">String Set</a>
+                        </td>
+                        <td>
+                            <span class="default">{}</span>
+                        </td>
+                    </tr>
+                </table>
+            </subsection>
 
-      <subsection name="Examples">
-        <p>
-          To configure the check so that it reject files not matching
-          a business rule:
-        </p>
-        <source>
-&lt;module name="XQueryCheck"&gt;
-    &lt;property name="expression" value="
-    for $x      in //parent_element, 
-                    $name   in $x/name/@value, 
-                    $child1 in $x/child1/@value, 
-                    $child2 in $x/child2/@value 
-                where $child1 != $name
-                and   $port   != $name
-                return $x
-    " /&gt;
-    &lt;!-- next line not required as 0 is the default --&gt;
-    &lt;property name="min" value="0"/&gt;
-    &lt;property name="max" value="0"/&gt;
-&lt;/module&gt;
-        </source>
+            <subsection name="Examples">
+                <p>
+                    To configure the check so that it reject files not matching
+                    a business rule:
+                </p>
+                <source>
+                    &lt;module name="XQueryCheck"&gt;
+                    &lt;property name="expression" value="
+                    for $x in //parent_element,
+                    $name in $x/name/@value,
+                    $child1 in $x/child1/@value,
+                    $child2 in $x/child2/@value
+                    where $child1 != $name
+                    and $port != $name
+                    return $x
+                    " /&gt;
+                    &lt;!-- next line not required as 0 is the default --&gt;
+                    &lt;property name="min" value="0"/&gt;
+                    &lt;property name="max" value="0"/&gt;
+                    &lt;/module&gt;
+                </source>
 
-      </subsection>
+            </subsection>
 
-      <subsection name="Package">
-        <p>
-          com.puppycrawl.tools.checkstyle.checks
-        </p>
-      </subsection>
+            <subsection name="Package">
+                <p>
+                    com.puppycrawl.tools.checkstyle.checks
+                </p>
+            </subsection>
 
-      <subsection name="Parent Module">
-        <p>
-          <a href="config.html#xmltreeparser">XmlTreeParser</a>
-        </p>
-      </subsection>
-    </section>
+            <subsection name="Parent Module">
+                <p>
+                    <a href="config.html#xmltreeparser">XmlTreeParser</a>
+                </p>
+            </subsection>
+        </section>
 
-  </body>
+    </body>
 </document>
