@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+    "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+    "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+<module name="Checker">
+  <module name="XmlTreeWalker">
+    <module name="XPathCheck">
+         <property name="namespaces" value="bk, urn:xmlns:25hoursaday-com:bookstore, inv, urn:xmlns:25hoursaday-com:inventory-tracking"/>
+         <property name="expression" value="/bk:bookstore/bk:book[bk:title = 'Lord of the Rings']/inv:inventory[@status = 'in-stock']"/>
+     </module>
+  </module>
+</module>
