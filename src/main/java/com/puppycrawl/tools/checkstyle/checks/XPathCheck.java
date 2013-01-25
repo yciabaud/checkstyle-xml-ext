@@ -19,21 +19,29 @@
 
 package com.puppycrawl.tools.checkstyle.checks;
 
-import com.puppycrawl.tools.checkstyle.api.XmlTokenTypes;
-import com.puppycrawl.tools.checkstyle.api.Check;
-import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import java.io.StringReader;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+
+import javax.xml.namespace.NamespaceContext;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 import javax.xml.xpath.XPathFactoryConfigurationException;
+
 import net.sf.saxon.om.NamespaceConstant;
 import net.sf.saxon.om.NodeInfo;
 import net.sf.saxon.xpath.XPathFactoryImpl;
+
 import org.xml.sax.InputSource;
+
+import com.puppycrawl.tools.checkstyle.api.Check;
+import com.puppycrawl.tools.checkstyle.api.DetailAST;
+import com.puppycrawl.tools.checkstyle.api.XmlTokenTypes;
 
 /**
  * <p>
@@ -71,6 +79,9 @@ public class XPathCheck extends Check{
     
     /** XPath expression*/
     private XPathExpression xPathExpression;
+    
+    /** */
+    private String[] namespaces;
         
     /** {@inheritDoc} */
     @Override
@@ -95,6 +106,37 @@ public class XPathCheck extends Check{
             return;
         }
         XPath xpath = fabrique.newXPath();
+        
+        if( namespaces != null )
+        {
+        	final Map<String, String> ns = new HashMap<String, String>();
+        	
+        	for( int index = 0; index < namespaces.length; index+=2)
+        	{
+        		ns.put(namespaces[index], namespaces[index+1]);
+        	}
+        	
+        	xpath.setNamespaceContext(new NamespaceContext() {
+        		
+        		private Map<String, String> namespaceMap = ns;
+				
+				@Override
+				public Iterator getPrefixes(String arg0) {
+					return null; //not used
+				}
+				
+				@Override
+				public String getPrefix(String arg0) {
+					return null; //not used
+				}
+				
+				@Override
+				public String getNamespaceURI(String prefix) {
+					return namespaceMap.get(prefix);
+				}
+			});
+        	
+        }
         
         try {
             //évaluation de l'expression XPath
@@ -182,4 +224,17 @@ public class XPathCheck extends Check{
     public void setExpression(String expression) {
         this.expression = expression;
     }
+    
+    /**
+     * Setter of namespaces.
+     * For instance: 
+     * <pre>
+     *   &lt;property name="namespaces" value="bk, urn:xmlns:25hoursaday-com:bookstore, inv, urn:xmlns:25hoursaday-com:inventory-tracking"/&gt;
+     * </pre>
+     * 
+     * @param namespaces an array containing a prefix + namespace pair
+     */
+    public void setNamespaces(String[] namespaces) {
+		this.namespaces = namespaces;
+	}
 }
