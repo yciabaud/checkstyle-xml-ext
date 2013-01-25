@@ -67,7 +67,6 @@ public class XPathCheckTest {
 	}
 
 	@Test
-	@Ignore	// untill it is fixed
 	public void testSeverity() throws Exception {
 		// prepare
 		AuditListener listener = mock(AuditListener.class);
