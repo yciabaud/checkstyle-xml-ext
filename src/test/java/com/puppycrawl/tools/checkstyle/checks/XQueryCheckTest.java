@@ -28,4 +28,24 @@ public class XQueryCheckTest extends AbstractXmlCheckTest {
 				.getSourceName());
 	}
 
+	@Test
+	public void testRequired() throws Exception {
+		// prepare
+		AuditListener listener = mock(AuditListener.class);
+		ArgumentCaptor<AuditEvent> argument = ArgumentCaptor
+				.forClass(AuditEvent.class);
+
+		// execute
+		processChecker("issues/xquery-required", listener);
+
+		// verify
+		verify(listener).addError(argument.capture());
+		assertEquals(XQueryCheck.class.getName(), argument.getValue()
+				.getSourceName());
+		assertEquals(
+				"Expected at least 1 match(es) for expression 'for $b in /bookstore/book" +
+				"                                             where $b/title = 'XML for Dummies'" +
+				"                                             return $b', but found 0.",
+				argument.getValue().getMessage());
+	}
 }

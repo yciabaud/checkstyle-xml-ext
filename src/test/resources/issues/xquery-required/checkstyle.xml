@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+    "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+    "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+<module name="Checker">
+  <module name="XmlTreeWalker">
+    <module name="XQueryCheck">
+         <property name="expression" value="for $b in /bookstore/book
+                                            where $b/title = 'XML for Dummies'
+                                            return $b"/>
+         <property name="min" value="1"/>
+     </module>
+  </module>
+</module>
