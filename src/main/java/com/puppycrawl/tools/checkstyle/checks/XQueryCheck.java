@@ -23,7 +23,12 @@ import com.puppycrawl.tools.checkstyle.api.XmlTokenTypes;
 import com.puppycrawl.tools.checkstyle.api.Check;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import java.io.StringReader;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+
+import javax.xml.namespace.NamespaceContext;
 import javax.xml.transform.sax.SAXSource;
 import net.sf.saxon.Configuration;
 import net.sf.saxon.om.DocumentInfo;
@@ -79,6 +84,8 @@ public class XQueryCheck extends Check {
     /** XQuery expression. */
     private XQueryExpression xQueryExpression;
     
+    private String[] namespaces;
+    
     /** Static query context */
     private StaticQueryContext sqc;
     
@@ -101,6 +108,14 @@ public class XQueryCheck extends Check {
         
         try {
             sqc = new StaticQueryContext(c);
+            if( namespaces != null )
+            {
+            	for( int index = 0; index < namespaces.length; index+=2)
+            	{
+            		sqc.declareNamespace(namespaces[index], namespaces[index+1]);
+            	}
+            }
+            
             env = new DynamicQueryContext(c);
             xQueryExpression = sqc.compileQuery(expression);
         } catch (XPathException ex) {
@@ -189,4 +204,17 @@ public class XQueryCheck extends Check {
     public void setExpression(String expression) {
         this.expression = expression;
     }
+    
+    /**
+     * Setter of namespaces.
+     * For instance: 
+     * <pre>
+     *   &lt;property name="namespaces" value="bk, urn:xmlns:25hoursaday-com:bookstore, inv, urn:xmlns:25hoursaday-com:inventory-tracking"/&gt;
+     * </pre>
+     * 
+     * @param namespaces an array containing a prefix + namespace pair
+     */
+    public void setNamespaces(String[] namespaces) {
+		this.namespaces = namespaces;
+	}
 }
