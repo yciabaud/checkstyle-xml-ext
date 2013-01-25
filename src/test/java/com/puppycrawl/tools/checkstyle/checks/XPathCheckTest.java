@@ -49,4 +49,23 @@ public class XPathCheckTest extends AbstractXmlCheckTest {
 				.getSourceName());
 	}
 
+	@Test
+	public void testRequired() throws Exception {
+		// prepare
+		AuditListener listener = mock(AuditListener.class);
+		ArgumentCaptor<AuditEvent> argument = ArgumentCaptor
+				.forClass(AuditEvent.class);
+
+		// execute
+		processChecker("issues/xpath-required", listener);
+
+		// verify
+		verify(listener).addError(argument.capture());
+		assertEquals(XPathCheck.class.getName(), argument.getValue()
+				.getSourceName());
+		assertEquals(
+				"Expected at least 1 match(es) for expression '/bookstore/book[title = 'XML for Dummies']', but found 0.",
+				argument.getValue().getMessage());
+	}
+
 }
