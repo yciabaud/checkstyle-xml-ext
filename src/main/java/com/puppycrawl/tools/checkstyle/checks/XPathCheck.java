@@ -181,8 +181,11 @@ public class XPathCheck extends Check{
         }
         
         int nbMatches = resultat != null ? resultat.size() : 0;
-        if( nbMatches < min || nbMatches > max){
-           
+        if( nbMatches < min ) {
+        	log(0, "xpath.lessMatches", expression, nbMatches, min);
+        }
+        else if ( nbMatches > max)
+        {
             for(int i=max; i<resultat.size(); i++){
                 int line = aAST.getLineNo();
                 int col = aAST.getColumnNo();
