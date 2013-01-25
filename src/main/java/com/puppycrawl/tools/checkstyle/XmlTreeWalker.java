@@ -282,7 +282,6 @@ public class XmlTreeWalker extends AbstractFileSetCheck {
     {
         for (Check ch : mAllChecks) {
             ch.setFileContents(aContents);
-            ch.contextualize(mChildContext);
             ch.beginTree(aRootAST);
         }
     }

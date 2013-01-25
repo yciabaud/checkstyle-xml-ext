@@ -1,0 +1,7 @@
+<bk:bookstore xmlns:bk="urn:xmlns:25hoursaday-com:bookstore">
+  <bk:book> 
+    <bk:title>Lord of the Rings</bk:title> 
+    <bk:author>J.R.R. Tolkien</bk:author>
+    <inv:inventory status="in-stock" isbn="0345340426" xmlns:inv="urn:xmlns:25hoursaday-com:inventory-tracking" />
+  </bk:book> 
+</bk:bookstore>
