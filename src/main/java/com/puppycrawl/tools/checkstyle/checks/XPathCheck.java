@@ -74,6 +74,11 @@ public class XPathCheck extends Check{
     /** Minimum number occurencies of the expression. */
     private int min = DEFAULT_VALUE;
     
+    /** The starting context, a node for example */
+    private String item = "/";
+    
+    private XPathExpression itemExpression;
+    
     /** String value of XPath expression*/
     private String expression;
     
@@ -139,7 +144,7 @@ public class XPathCheck extends Check{
         }
         
         try {
-            //évaluation de l'expression XPath
+        	itemExpression = xpath.compile(item);
             xPathExpression = xpath.compile(expression);
         } catch (XPathExpressionException ex) {
             log(0, "Invalid XPath expression: " + expression);
@@ -166,42 +171,51 @@ public class XPathCheck extends Check{
             return;
         }
        
-        List resultat = null;
+        List contexts = null;
         try {
             final String fullText = getFileContents().getText().getFullText().toString();
             InputSource document = new InputSource();
             document.setCharacterStream(new StringReader(fullText));
-            resultat = (List) xPathExpression.evaluate(document, XPathConstants.NODESET);
+            contexts = (List) itemExpression.evaluate(document, XPathConstants.NODESET);
+
+	        int contextsMatches = contexts != null ? contexts.size() : 0;
+	        
+	        if( contextsMatches > 0 )
+	        {
+	        	for ( int contentsIndex = 0 ; contentsIndex < contextsMatches; contentsIndex++)
+	        	{
+	        		List resultat = (List) xPathExpression.evaluate(contexts.get(contentsIndex), XPathConstants.NODESET);
+	                int nbMatches = resultat != null ? resultat.size() : 0;
+	                if( nbMatches < min ) {
+	                	log(0, "xpath.lessMatches", expression, nbMatches, min);
+	                }
+	                else if ( nbMatches > max)
+	                {
+	                    for(int i=max; i<resultat.size(); i++){
+	                        int line = aAST.getLineNo();
+	                        int col = aAST.getColumnNo();
+	
+	                        if(resultat.get(i) instanceof NodeInfo){
+	                            line = ((NodeInfo)resultat.get(i)).getLineNumber();
+	                            col = ((NodeInfo)resultat.get(i)).getColumnNumber() - 1;
+	                        }
+	                        log(line,
+	                            col,
+	                            "xpath.invalidPath",
+	                            aAST.getText(),
+	                            expression, nbMatches, min, max);
+	                    }
+	                }
+	        	}
+	        	
+	        }
         } catch (XPathExpressionException ex) {
             log(aAST.getLineNo(),
                 "XPath evaluation failed: " + ex.getMessage());
             ex.printStackTrace();
-            
             return;
         }
-        
-        int nbMatches = resultat != null ? resultat.size() : 0;
-        if( nbMatches < min ) {
-        	log(0, "xpath.lessMatches", expression, nbMatches, min);
-        }
-        else if ( nbMatches > max)
-        {
-            for(int i=max; i<resultat.size(); i++){
-                int line = aAST.getLineNo();
-                int col = aAST.getColumnNo();
 
-                if(resultat.get(i) instanceof NodeInfo){
-                    line = ((NodeInfo)resultat.get(i)).getLineNumber();
-                    col = ((NodeInfo)resultat.get(i)).getColumnNumber() - 1;
-                }
-                log(line,
-                    col,
-                    "xpath.invalidPath",
-                    aAST.getText(),
-                    expression, nbMatches, min, max);
-            }
-        }
-        
     }
 
     /**
@@ -239,5 +253,9 @@ public class XPathCheck extends Check{
      */
     public void setNamespaces(String[] namespaces) {
 		this.namespaces = namespaces;
+	}
+    
+    public void setItem(String item) {
+		this.item = item;
 	}
 }
