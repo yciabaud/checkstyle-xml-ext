@@ -252,7 +252,7 @@ public class XmlContentHandler implements ContentHandler {
             token = new XmlToken();
             token.setLine(locator.getLineNumber());
             token.setColumn( index );
-            token.setText(rawName);
+            token.setText(attributs.getLocalName(index));
             token.setType(XmlTokenTypes.IDENT);
             ident.initialize(token);
             attr.addChild(ident);
@@ -262,7 +262,7 @@ public class XmlContentHandler implements ContentHandler {
             token = new XmlToken();
             token.setLine(locator.getLineNumber());
             token.setColumn( index + attributs.getLocalName(index).length() + 1 );
-            token.setText(rawName);
+            token.setText(attributs.getValue(index));
             token.setType(XmlTokenTypes.STRING_LITERAL);
             value.initialize(token);
             attr.addChild(value);

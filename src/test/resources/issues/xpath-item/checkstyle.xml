@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+    "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+    "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+<module name="Checker">
+  <module name="XmlTreeWalker">
+    <module name="XPathCheck">
+         <property name="item" value="/bookstore/book"/>
+         <!-- we don't want expensive books -->
+         <property name="expression" value=".[price &gt; 35]"/>
+     </module>
+  </module>
+</module>
